@@ -2,7 +2,13 @@ package univ_angers.virtuose.utils;
 
 import java.io.*;
 
+import org.apache.log4j.Logger;
+
+import univ_angers.virtuose.search.Search;
+
 public class HandleFiles {
+	private static Logger log = Logger.getLogger(HandleFiles.class);
+
 	String type;
 	String filePath;
 	

@@ -3,15 +3,19 @@ package univ_angers.virtuose.utils;
 import java.io.File;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import org.apache.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import univ_angers.virtuose.search.Search;
 import univ_angers.virtuose.utils.HandleFiles;
 
  
 public class Writer {
- 
+	private static Logger log = Logger.getLogger(Writer.class);
+
    public static int count =0;
    public static int countFile = 1;
    //public static String sufName;
@@ -78,5 +82,7 @@ public class Writer {
      }
  
    }
+   
+   
  
 }

@@ -1,5 +1,6 @@
 package univ_angers.virtuose.search;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -25,6 +26,9 @@ import java.io.IOException;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 
 public class Search {
+	
+	private static Logger log = Logger.getLogger(Search.class);
+	
   public static void start(String[] args) throws IOException, ParseException {
 
     // 0. Specify the analyzer for tokenizing text.
@@ -41,7 +45,7 @@ public class Search {
     File folder = new File(folderPath);
     for(String fileName : folder.list()) {
     	addDoc(w, folderPath+fileName);
-    	//System.out.println("!!!file: " + fileName);
+    	log.info( "Add " + fileName + " to index.");
     }
     w.close();
 

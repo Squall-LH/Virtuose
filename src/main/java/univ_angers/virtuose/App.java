@@ -15,8 +15,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        //Cut.start(args);
-    	try {
+        try {
+			Cut.start(args);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+        /*
+        try {
 			Search.start(args);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -25,5 +32,7 @@ public class App
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+		*/
+        
+        }
 }
