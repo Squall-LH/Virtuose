@@ -43,10 +43,6 @@ public class Search {
     	addDoc(w, folderPath+fileName);
     	//System.out.println("!!!file: " + fileName);
     }
-    addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm6.xml");
-    addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm7.xml");
-    addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm8.xml");
-    addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm9.xml");
     w.close();
 
     // 2. query
