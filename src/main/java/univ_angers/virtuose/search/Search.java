@@ -25,7 +25,7 @@ import java.io.IOException;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 
 public class Search {
-  public static void main(String[] args) throws IOException, ParseException {
+  public static void start(String[] args) throws IOException, ParseException {
 
     // 0. Specify the analyzer for tokenizing text.
     //    The same analyzer should be used for indexing and searching
@@ -37,6 +37,12 @@ public class Search {
     IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_40, analyzer);
 
     IndexWriter w = new IndexWriter(index, config);
+    String folderPath = "/home/etudiant/lucene_docs_src/";
+    File folder = new File(folderPath);
+    for(String fileName : folder.list()) {
+    	addDoc(w, folderPath+fileName);
+    	//System.out.println("!!!file: " + fileName);
+    }
     addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm6.xml");
     addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm7.xml");
     addDoc(w, "/home/etudiant/lucene_docs_src/Manceau-alain-rai-UIPL_mm8.xml");
