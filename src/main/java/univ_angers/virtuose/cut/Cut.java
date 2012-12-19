@@ -14,9 +14,7 @@ import univ_angers.virtuose.utils.Writer;
 
 public class Cut {
 	private static Logger log = Logger.getLogger(Cut.class);
-	static String docs = "/home/etudiant/cardsPagination/";
-	static String filePath = "src/main/resources/Manceau-alain-rai-UIPL.mm";
-
+	
 	// count line number of filename
 	public static int count(String filename) throws IOException {
 		InputStream is = new BufferedInputStream(new FileInputStream(filename));
@@ -38,7 +36,8 @@ public class Cut {
 		}
 	}
 
-	public static void start(String[] args) throws IOException {
+	public static void start(String filePath, String docs) throws IOException {
+		log.info("filePath to index: " + filePath);
 		Writer.proceed(docs, filePath);
 		List<String> fileToCut;
 		List<String> proceed = new ArrayList<String>();

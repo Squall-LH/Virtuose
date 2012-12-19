@@ -22,7 +22,7 @@ public class Writer {
    public static String prefName;
    public static HandleFiles h;
 		   
-   public static void proceed(String docPath, String filePath) {
+   public static void proceed(final String docPath, String filePath) {
 	   String parsedFile = filePath;
 	   (new HandleFiles("d",docPath)).handle();
 	   
@@ -43,7 +43,7 @@ public class Writer {
 				   if (qName.equalsIgnoreCase("node") ){
 				   	   if (count == 0){
 				   	   		//sufName = attributes.getValue("ID");
-				   	   		h = new HandleFiles("f","/home/etudiant/cardsPagination/"+prefName+countFile+".xml");
+				   	   		h = new HandleFiles("f",docPath+prefName+countFile+".xml");
 				   	   		h.handle();
 				   	   		countFile++;
 				   	   }

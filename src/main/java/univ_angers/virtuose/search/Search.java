@@ -29,7 +29,7 @@ public class Search {
 	
 	private static Logger log = Logger.getLogger(Search.class);
 	
-  public static void start(String[] args) throws IOException, ParseException {
+  public static void start(String keywords, String folderPath) throws IOException, ParseException {
 
     // 0. Specify the analyzer for tokenizing text.
     //    The same analyzer should be used for indexing and searching
@@ -41,7 +41,6 @@ public class Search {
     IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_40, analyzer);
 
     IndexWriter w = new IndexWriter(index, config);
-    String folderPath = "/home/etudiant/lucene_docs_src/";
     File folder = new File(folderPath);
     for(String fileName : folder.list()) {
     	addDoc(w, folderPath+fileName);
@@ -50,8 +49,8 @@ public class Search {
     w.close();
 
     // 2. query
-    String querystr = args.length > 0 ? args[2] : "d'affaire";
-
+    String querystr = keywords;
+    
     // the "title" arg specifies the default field to use
     // when no field is explicitly specified in the query.
     Query q = new QueryParser(Version.LUCENE_40, "content", analyzer).parse(querystr);
@@ -69,7 +68,8 @@ public class Search {
     for(int i=0;i<hits.length;++i) {
       int docId = hits[i].doc;
       Document d = searcher.doc(docId);
-      log.info((i + 1) + ". " + d.get("title") + "\n" + d.get("content"));
+      log.info((i + 1) + ". " + d.get("title"));
+      log.debug(d.get("content"));
     }
 
     // reader can only be closed when there
