@@ -42,7 +42,7 @@ public class Cut {
 		Writer.proceed(docs, filePath);
 		List<String> fileToCut;
 		List<String> proceed = new ArrayList<String>();
-		
+
 		do {
 			fileToCut = new ArrayList<String>();
 			File file = new File(docs);
@@ -57,25 +57,6 @@ public class Cut {
 				proceed.add(fileName);
 			}
 		} while (fileToCut.size() > 0);
-		
-	/*	
-		int i = 0;
-		do {
-			fileToCut = new ArrayList<String>();
-			File file = new File(docs);
-			for (String fileName : file.list()) {
-				if (count(docs + fileName) > 4 && !proceed.contains(fileName)) {
-					fileToCut.add(docs + fileName);
-				}
-			}
-
-			for (String fileName : fileToCut) {
-				Writer.proceed(docs, fileName);
-				proceed.add(fileName);
-			}
-			i++;
-		} while (fileToCut.size() > 0 && i < 10);
-*/
 	}
 
 }

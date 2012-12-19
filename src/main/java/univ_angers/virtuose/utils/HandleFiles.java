@@ -60,7 +60,6 @@ public class HandleFiles {
 		} else {
 			System.out.println("Can not write in "+this.filePath);
 		}
-		
 	}
 	
 	

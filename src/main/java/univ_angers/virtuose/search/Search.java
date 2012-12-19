@@ -45,17 +45,17 @@ public class Search {
     File folder = new File(folderPath);
     for(String fileName : folder.list()) {
     	addDoc(w, folderPath+fileName);
-    	log.info( "Add " + fileName + " to index.");
+    	log.debug( "Add " + fileName + " to index.");
     }
     w.close();
 
     // 2. query
-    String querystr = args.length > 0 ? args[0] : "d'affaire";
+    String querystr = args.length > 0 ? args[2] : "d'affaire";
 
     // the "title" arg specifies the default field to use
     // when no field is explicitly specified in the query.
     Query q = new QueryParser(Version.LUCENE_40, "content", analyzer).parse(querystr);
-    System.out.println("query pure: " + querystr + "\n" + q.toString());
+    log.debug("query pure: " + querystr + "\n" + q.toString());
     // 3. search
     int hitsPerPage = 10;
     IndexReader reader = DirectoryReader.open(index);
@@ -65,11 +65,11 @@ public class Search {
     ScoreDoc[] hits = collector.topDocs().scoreDocs;
     
     // 4. display results
-    System.out.println("Found " + hits.length + " hits.");
+    log.info("Found " + hits.length + " hits.");
     for(int i=0;i<hits.length;++i) {
       int docId = hits[i].doc;
       Document d = searcher.doc(docId);
-      System.out.println((i + 1) + ". " + d.get("title") + "\n" + d.get("content"));
+      log.info((i + 1) + ". " + d.get("title") + "\n" + d.get("content"));
     }
 
     // reader can only be closed when there
@@ -96,8 +96,8 @@ public class Search {
   
   private static void addDoc(IndexWriter w, String title) throws IOException {
 	String content = readFile(title);
-	System.out.println(title+" :");
-	System.out.println(content+"\n");
+	log.debug(title+" :");
+	log.debug(content+"\n");
     Document doc = new Document();
     doc.add(new TextField("title", title, Field.Store.YES));
 
