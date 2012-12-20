@@ -9,6 +9,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import univ_angers.virtuose.utils.XmlToHtml;
+
 @WebServlet("/controller")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class Controller extends HttpServlet {
@@ -36,7 +38,6 @@ public class Controller extends HttpServlet {
 		if (action == null) {
 
 		} else if (action.equals("search")) {
-			Collection<Part> parts = request.getParts();
 			// get access to file that is uploaded from client
             Part p1 = request.getPart("map");
             InputStream is = p1.getInputStream();
@@ -57,6 +58,34 @@ public class Controller extends HttpServlet {
                  ch = is.read();
             }
 
+            // on traite le .mm
+            XmlToHtml.start();
+            
+            // on l'affiche:
+            BufferedReader br = null;
+            String map = "";
+    		try {
+     
+    			String sCurrentLine;
+     
+    			br = new BufferedReader(new FileReader("/home/etudiant/html/page.html"));
+    			br.readLine();
+    			
+    			while ((sCurrentLine = br.readLine()) != null) {
+    				map += sCurrentLine;
+    				map += "\n";
+    			}
+     
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		} finally {
+    			try {
+    				if (br != null)br.close();
+    			} catch (IOException ex) {
+    				ex.printStackTrace();
+    			}
+    		}
+    		session.setAttribute("map", map);
             session.setAttribute("keywords", keywords);
 			disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);

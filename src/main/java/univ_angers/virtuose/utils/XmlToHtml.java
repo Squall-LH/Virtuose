@@ -25,9 +25,13 @@ public class XmlToHtml {
 	static String mapPath = mapFolder + mapName;
 	static String xml_folder = "/home/etudiant/html";
 	static String htmlPath = "/home/etudiant/html/page.html";
-	static int depth = 0;
+	static int depth = 1;
 	
 	public static void main(String[] args) {
+		start();
+	}
+
+	public static void start() {
 		SAXBuilder sxb = new SAXBuilder();
 		try {
 			document = sxb.build(new File(mapPath));
@@ -40,7 +44,7 @@ public class XmlToHtml {
 		racine = document.getRootElement();
 		afficheALL(document, racine);
 	}
-
+	
 	static void afficheALL(Document doc, Element node) {
 		List<Element> lNode = new ArrayList<Element>();
 		lNode.add(node);
@@ -101,7 +105,7 @@ public class XmlToHtml {
 			a.setText(text);
 			e.addContent(0, a);
 			e.removeAttribute("TEXT");
-			//e.removeAttribute("PROFONDEUR");
+			e.removeAttribute("PROFONDEUR");
 			e.removeAttribute("ID");
 			e.removeAttribute("ID_PARENT");
 			e.setName("li");
