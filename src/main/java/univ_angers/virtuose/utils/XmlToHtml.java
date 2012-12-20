@@ -8,9 +8,11 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Queue;
 import java.util.Stack;
 
 public class XmlToHtml {
@@ -44,15 +46,14 @@ public class XmlToHtml {
 		lNode.add(node);
 		elemToHtml(node);
 		
-		Stack<Element> stack = new Stack<Element>();
+		Queue<Element> stack = new ArrayDeque<Element>();
 		Iterator<Element> i = node.getChildren("node").iterator();
 		while (i.hasNext()) {
-			stack.push(i.next());
+			stack.add(i.next());
 		}
 
-		while (!stack.empty()) {
-			Element e = stack.pop();
-			
+		while (stack.peek() != null) {
+			Element e = stack.poll();
 			
 			int current_depth = getDepth(e);
 			//log.debug("DEPTH: " + depth);
@@ -75,7 +76,7 @@ public class XmlToHtml {
 				Element eChild = (Element) e_i.next();
 				if (!lNode.contains(eChild)) {
 					lNode.add(eChild);
-					stack.push(eChild);
+					stack.add(eChild);
 				}
 			}
 		}
