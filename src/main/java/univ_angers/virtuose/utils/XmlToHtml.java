@@ -218,6 +218,9 @@ public class XmlToHtml {
 			String text = e.getAttributeValue("TEXT");
 			log.debug("elemToHtml: " + text);
 			Element a = new Element("a");
+			if(text.length() < 2) {
+				text = "default";
+			}
 			a.setText(text);
 			e.addContent(0, a);
 			e.removeAttribute("TEXT");

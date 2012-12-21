@@ -1,6 +1,7 @@
 package univ_angers.virtuose.webapp;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -10,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.document.Document;
 
+import univ_angers.virtuose.rendu.Extract;
 import univ_angers.virtuose.search.Search;
 import univ_angers.virtuose.utils.Writer;
 import univ_angers.virtuose.utils.XmlToHtml;
@@ -68,12 +71,33 @@ public class Controller extends HttpServlet {
             Search.index("/tmp/map.mm");
         	Writer.proceed("/tmp/map.mm");
             // 2. query
-            String result = Search.search(keywords);
+        	String querystr = keywords;
+            ArrayList<Document> docs = Search.search(querystr);
+            ArrayList<String> xmls = new ArrayList<String>();
+            /**
+             * Generate all xml documents according to the lucene doc that match the request
+             */
+            //Document d = docs.get(0);
+            for (Document d : docs){
+            	String tmp = "";
+				try {
+					tmp = Extract.extract(d.get("document"), d.get("id"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	xmls.add(tmp);
+            }
+            
+        	String result = xmls.get(0);
+            
+            
             log.debug("Controller:result: "+ result);
             FileWriter writer = null;
             try{
                 writer = new FileWriter("/tmp/map.xml", true);
-                writer.write(result,0,result.length());
+                //writer.write(result,0,result.length());
+                writer.write(result);
            }catch(IOException ex){
                ex.printStackTrace();
            }finally{
@@ -100,14 +124,10 @@ public class Controller extends HttpServlet {
      
     		} catch (IOException e) {
     			e.printStackTrace();
-    		} finally {
-    			try {
-    				if (br != null)br.close();
-    			} catch (IOException ex) {
-    				ex.printStackTrace();
-    			}
     		}
     		
+    		File map_xml = new File("/tmp/map.xml");
+    		map_xml.delete();
     		session.setAttribute("map", map);
             session.setAttribute("keywords", keywords);
 			disp = request.getRequestDispatcher("result.jsp");

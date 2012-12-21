@@ -1,6 +1,9 @@
 <html>
 <body>
-<h2>result</h2>
+<h2>Virtuose</h2>
+<p>
+
+</p>
 <form enctype="multipart/form-data" action="controller?action=search" method="post"> 
 <p>
 Keywords

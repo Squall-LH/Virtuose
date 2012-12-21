@@ -1,5 +1,8 @@
 package univ_angers.virtuose.search;
 
+import univ_angers.virtuose.rendu.Extract;
+import univ_angers.virtuose.utils.Writer;
+
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -28,8 +31,6 @@ import java.util.logging.Logger;
 
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 
-import univ_angers.virtuose.utils.Writer;
-
 public class Search {
 	
 	//private static Logger log = Logger.getLogger(Search.class);
@@ -55,9 +56,15 @@ public class Search {
 		
 	}
 	
-	public static String search( String querystr){
+	/**
+	 * 
+	 * @param querystr requête au format String
+	 * @return a list of all 10 documents that match the query result
+	 */
+	public static ArrayList<Document> search( String querystr){
 		// the "title" arg specifies the default field to use
 	    // when no field is explicitly specified in the query.
+		ArrayList<Document> founded=new ArrayList<Document>();
 		try{
 			FrenchAnalyzer analyzer = new FrenchAnalyzer(Version.LUCENE_40);
 		    Query q = new QueryParser(Version.LUCENE_40, "content", analyzer).parse(querystr);
@@ -73,36 +80,47 @@ public class Search {
 		    TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage, true);
 		    searcher.search(q, collector);
 		    ScoreDoc[] hits = collector.topDocs().scoreDocs;
-		    
 		    // 4. display results
 		    System.out.println("Found " + hits.length + " hits.");
 		    for(int i=0;i<hits.length;++i) {
 		      int docId = hits[i].doc;
 		      Document d = searcher.doc(docId);
-		      System.out.println((i + 1) + ". " + d.get("title") + "\n" + d.get("content")+"\n"+hits[i].score);
+		      System.out.println((i + 1) + ". " + d.get("title")+ "\n" + d.get("document") + "\n" + d.get("content")+"\n"+d.get("id")+"\n"+d.get("id_parent")+"\n"+hits[i].score);
+		      founded.add(d);
 		    }
-		    
-		    Document d = searcher.doc(hits[0].doc);
-		    String result = d.get("content");
 	
 		    // reader can only be closed when there
 		    // is no need to access the documents any more.
 		    reader.close();
-		    return result;
+		    return founded;
 		}
 		catch(Exception e){
 			//log.error(e.getMessage());
-			return null;
+			return founded;
 		}
 	}
 	
 	
-  public static void main(String[] args) throws IOException, ParseException {
+  public static void main(String[] args) throws Exception {
 	index(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
 	
 	Writer.proceed(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
     // 2. query
     String querystr = args.length > 0 ? args[0] : "matériel ALCATEL";
-    search(querystr);
+    ArrayList<Document> docs = search(querystr);
+    ArrayList<String> xmls = new ArrayList<String>();
+    /**
+     * Generate all xml documents according to the lucene doc that match the request
+     */
+    //Document d = docs.get(0);
+    for (Document d : docs){
+    	String tmp = Extract.extract(d.get("document"), d.get("id"));
+    	xmls.add(tmp);
+    }
+    
+    for (String s : xmls){
+    	System.out.println(s);
+    }
+    
   }
 }
