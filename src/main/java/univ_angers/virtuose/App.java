@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.queryparser.classic.ParseException;
-
-import univ_angers.virtuose.cut.Cut;
 import univ_angers.virtuose.search.Search;
 
 /**
@@ -30,7 +28,7 @@ public class App {
 		
 		log.info("request type: " + args[1]);
 		log.info("request param: " + args[2]);
-		
+		/*
 		if (args.length > 1 && args[1].equals(param_index)) {
 			try {
 				log.info("on index le fichier " + args[2]);
@@ -47,6 +45,6 @@ public class App {
 			} catch (ParseException e) {
 				log.error("ParseError:" + e.getMessage());
 			}
-		}
+		}*/
 	}
 }
