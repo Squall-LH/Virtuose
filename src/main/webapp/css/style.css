@@ -1,5 +1,5 @@
 body {
-  background:green;
+  background:orange;
 }
 .js-mindmap-active a.node {
   background:red;
@@ -20,4 +20,9 @@ body {
   border-width:5px !important;
   background:#8B0000;
   margin: 20px;
+}
+
+.result {
+	color: red;
+}
 }

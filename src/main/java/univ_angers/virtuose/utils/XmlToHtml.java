@@ -21,116 +21,43 @@ public class XmlToHtml {
 	static Document document;
 	static Element racine;
 	static String htmlPath = "/tmp/page.html";
+	static public String result = "";
+	static public String title = "";
 	static int depth = 0;
 
 	public static void main(String[] args) {
-		start("");
+		start("<node TEXT=\"AAA\" class=\"\"></node>");
+		log.info("title: "+title);
 	}
 
-	public static void start(String mapPath) {
+	public static void start(String xmlInput) {
 		SAXBuilder sxb = new SAXBuilder();
 		try {
-			document = sxb.build(new File(mapPath));
-		
+			document = sxb.build(new StringReader(xmlInput));
+			racine = document.getRootElement();
+			convert2(document, racine);
+			log.debug("convert2" + result);
 
-		// On initialise un nouvel élément racine avec l'élément racine du
-		// document. aka map
-		racine = document.getRootElement();
-		convert2(document, racine);
-		
-		document = sxb.build(new File(htmlPath));
-		racine = document.getRootElement();
-		convert3(document, racine);
+			document = sxb.build(new StringReader(result));
+			racine = document.getRootElement();
+			convert3(document, racine);
+			log.debug("convert3" + result);
 		} catch (Exception e) {
-				log.error(e.getMessage());
-			}
+			log.error(e.getMessage());
+		}
 	}
-
-	static void convert(Document doc, Element node) {
-		List<Element> lNode = new ArrayList<Element>();
-		lNode.add(node);
-		elemToHtml(node);
-
-		Stack<Element> stack = new Stack<Element>();
-
-		Iterator<Element> i = node.getChildren("node").iterator();
-		while (i.hasNext()) {
-			stack.push(i.next());
-		}
-
-		while (!stack.empty()) {
-			Element e = stack.pop();
-			elemToHtml(node);
-
-			Iterator<Element> e_i = e.getChildren("node").iterator();
-			while (e_i.hasNext()) {
-				Element eChild = (Element) e_i.next();
-				if (!lNode.contains(eChild)) {
-					lNode.add(eChild);
-					stack.push(eChild);
-				}
-			}
-		}
-
-		save_xml(doc, htmlPath);
-	}
-
-	static void convert1(Document doc, Element node)
-			throws DataConversionException {
-		List<Element> lNode = new ArrayList<Element>();
-		lNode.add(node);
-		// elemToHtml(node);
-
-		Stack<Element> stack = new Stack<Element>();
-
-		Iterator<Element> i = node.getChildren("node").iterator();
-		while (i.hasNext()) {
-			stack.push(i.next());
-		}
-
-		while (stack.peek() != null) {
-			Element e = stack.pop();
-			int current_depth = e.getAttribute("PROFONDEUR").getIntValue();
-			log.debug("DEPTH: " + depth);
-			log.debug("CURRENT_DEPTH: " + current_depth);
-			log.debug(e.getAttribute("TEXT"));
-			if (depth != current_depth) {
-				log.debug("change of depth, add ul");
-				Element parent = e.getParentElement();
-				// if(!parent.getName().equals("ul")) {
-				List<Element> content = parent.removeContent();
-				Element ul = new Element("ul");
-				parent.addContent(ul);
-				ul.addContent(content);
-				// } else {
-				/*
-				 * parent = e.getParentElement(); parent = e.getParentElement();
-				 * List<Element> content = parent.removeContent(); Element ul =
-				 * new Element("ul"); parent.addContent(ul);
-				 * ul.addContent(content);
-				 */
-				// }
-			}
-			depth = current_depth;
-
-			Iterator<Element> e_i = e.getChildren("node").iterator();
-			while (e_i.hasNext()) {
-				Element eChild = (Element) e_i.next();
-				if (!lNode.contains(eChild)) {
-					lNode.add(eChild);
-					stack.push(eChild);
-				}
-			}
-		}
-
-		save_xml(doc, htmlPath);
-	}
-
+	
 	static void convert2(Document doc, Element node) {
 		List<Element> lNode = new ArrayList<Element>();
 		lNode.add(node);
+		
+		
+		if (node.getAttributeValue("class") != null) {
+			title = node.getAttributeValue("TEXT");
+			log.debug("-----------------------------------------"+title);
+		}
+		
 		elemToHtml(node);
-
 		Queue<Element> stack = new ArrayDeque<Element>();
 
 		Iterator<Element> i = node.getChildren().iterator();
@@ -140,6 +67,12 @@ public class XmlToHtml {
 
 		while (stack.peek() != null) {
 			Element e = stack.poll();
+			
+			if (e.getAttributeValue("class") != null) {
+				title = e.getAttributeValue("TEXT");
+				log.debug("-----------------------------------------"+title);
+			}
+			
 			elemToHtml(e);
 			Iterator<Element> e_i = e.getChildren().iterator();
 			while (e_i.hasNext()) {
@@ -151,6 +84,7 @@ public class XmlToHtml {
 			}
 		}
 
+		result = new XMLOutputter().outputString(doc);
 		save_xml(doc, htmlPath);
 	}
 
@@ -178,11 +112,11 @@ public class XmlToHtml {
 				}
 			}
 		}
-
+		
+		result = new XMLOutputter().outputString(doc);
 		save_xml(doc, htmlPath);
 	}
 
-	
 	/*
 	 * static int getDepth(Element e) { int depth = 0;
 	 * while(e.getParentElement() != null) { e = e.getParentElement(); depth++;
@@ -198,27 +132,24 @@ public class XmlToHtml {
 				parent.addContent(ul);
 				ul.addContent(content);
 			}
-			
+
 			String text = e.getAttributeValue("TEXT");
 			log.debug("elemToHtml: " + text);
-			/*Element a = new Element("a");
-			a.setText(text);
-			e.addContent(0, a);
-			e.removeAttribute("TEXT");
-			e.removeAttribute("PROFONDEUR");
-			e.removeAttribute("ID");
-			e.removeAttribute("ID_PARENT");*/
+			/*
+			 * Element a = new Element("a"); a.setText(text); e.addContent(0,
+			 * a); e.removeAttribute("TEXT"); e.removeAttribute("PROFONDEUR");
+			 * e.removeAttribute("ID"); e.removeAttribute("ID_PARENT");
+			 */
 			e.setName("li");
 		}
 	}
 
-
 	static void elemToHtml2(Element e) {
-		if(e.getName().equals("li")) {
+		if (e.getName().equals("li")) {
 			String text = e.getAttributeValue("TEXT");
 			log.debug("elemToHtml: " + text);
 			Element a = new Element("a");
-			if(text.length() < 2) {
+			if (text.length() < 2) {
 				text = "default";
 			}
 			a.setText(text);
@@ -231,7 +162,6 @@ public class XmlToHtml {
 		}
 	}
 
-	
 	static void save_xml(Document doc, String filePath) {
 		try {
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
