@@ -57,6 +57,7 @@ public class Controller extends HttpServlet {
 			    if(i == id) {
 			    	session.setAttribute("map", value);
 			    }
+			    i++;
 			}
 			disp = request.getRequestDispatcher("show.jsp");
 			disp.forward(request, response);
@@ -111,23 +112,11 @@ public class Controller extends HttpServlet {
 				String result = xml;
 
 				log.debug("Controller:result: " + result);
-				FileWriter writer = null;
-				try {
-					writer = new FileWriter("/tmp/map.xml", true);
-					// writer.write(result,0,result.length());
-					writer.write(result);
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				} finally {
-					if (writer != null) {
-						writer.close();
-					}
-				}
 				XmlToHtml.start(result);
 				String title = XmlToHtml.title;
 				String map = XmlToHtml.result;
-				log.debug("title: "+ title);
-				log.debug("map: "+ map);
+				//log.debug("title: "+ title);
+				//log.debug("map: "+ map);
 				listMap.put(title, map);
 			}
             

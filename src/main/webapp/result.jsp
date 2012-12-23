@@ -17,6 +17,7 @@ for (Map.Entry<String, String> entry : map.entrySet()) {
     String key = entry.getKey();
     String value = entry.getValue();
     out.println("<li><a href=\"controller?action=show&id="+i+"\">"+key+"</a></li>");
+    i++;
 }
 %>
 

@@ -85,7 +85,6 @@ public class XmlToHtml {
 		}
 
 		result = new XMLOutputter().outputString(doc);
-		save_xml(doc, htmlPath);
 	}
 
 	static void convert3(Document doc, Element node) {
@@ -114,14 +113,7 @@ public class XmlToHtml {
 		}
 		
 		result = new XMLOutputter().outputString(doc);
-		save_xml(doc, htmlPath);
 	}
-
-	/*
-	 * static int getDepth(Element e) { int depth = 0;
-	 * while(e.getParentElement() != null) { e = e.getParentElement(); depth++;
-	 * } return depth; }
-	 */
 
 	static void elemToHtml(Element e) {
 		if (e.getName().equals("node")) {
@@ -133,13 +125,8 @@ public class XmlToHtml {
 				ul.addContent(content);
 			}
 
-			String text = e.getAttributeValue("TEXT");
-			log.debug("elemToHtml: " + text);
-			/*
-			 * Element a = new Element("a"); a.setText(text); e.addContent(0,
-			 * a); e.removeAttribute("TEXT"); e.removeAttribute("PROFONDEUR");
-			 * e.removeAttribute("ID"); e.removeAttribute("ID_PARENT");
-			 */
+			//String text = e.getAttributeValue("TEXT");
+			//log.debug("elemToHtml: " + text);
 			e.setName("li");
 		}
 	}
@@ -147,7 +134,7 @@ public class XmlToHtml {
 	static void elemToHtml2(Element e) {
 		if (e.getName().equals("li")) {
 			String text = e.getAttributeValue("TEXT");
-			log.debug("elemToHtml: " + text);
+			//log.debug("elemToHtml: " + text);
 			Element a = new Element("a");
 			if (text.length() < 2) {
 				text = "default";
