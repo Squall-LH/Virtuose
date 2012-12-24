@@ -35,6 +35,12 @@ public class XmlToHtml {
 		try {
 			document = sxb.build(new StringReader(xmlInput));
 			racine = document.getRootElement();
+			
+			// On ignore la racine car Extract rend une racine au contenu vide pour le moment.
+			if(racine.getChildren().size() == 1) {
+				racine = (Element)racine.getChildren().get(0);
+			}
+			
 			convert2(document, racine);
 			log.debug("convert2" + result);
 
