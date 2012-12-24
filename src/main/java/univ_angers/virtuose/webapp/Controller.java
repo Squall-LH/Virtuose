@@ -25,7 +25,8 @@ import univ_angers.virtuose.utils.XmlToHtml;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(Controller.class);
-
+	private static String saved_map_folder = "src/ressources/saved_map/";
+	
 	public Controller() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -73,19 +74,32 @@ public class Controller extends HttpServlet {
 			keywords = s.nextLine(); // read filename from stream
 
 			// get filename to use on the server
-			String outputfile = "/tmp/map.mm"; // get path on the server
-			FileOutputStream os = new FileOutputStream(outputfile);
-
-			// write bytes taken from uploaded file to target file
-			int ch = is.read();
-			while (ch != -1) {
-				os.write(ch);
-				ch = is.read();
+			String fileName = getFileName(p1);
+		    log.info("File name : " + fileName);
+			String outputfile = saved_map_folder+fileName; // get path on the server
+			createDirectoryIfNeeded(saved_map_folder);
+			
+			if(mapExists(outputfile)) {
+				session.setAttribute("mapExists", "La carte existe déjà dans la base.");
 			}
+			else {
+				FileOutputStream os = new FileOutputStream(outputfile);
 
-			// on traite le .mm
-			Search.index("/tmp/map.mm");
-			Writer.proceed("/tmp/map.mm");
+				// write bytes taken from uploaded file to target file
+				int ch = is.read();
+				while (ch != -1) {
+					os.write(ch);
+					ch = is.read();
+				}
+				
+				// on traite le .mm
+				Search.index(outputfile);
+				Writer.proceed(outputfile);
+				os.close();
+			}
+			s.close();
+
+			
 			// 2. query
 			String querystr = keywords;
 			ArrayList<Document> docs = Search.search(querystr);
@@ -126,4 +140,35 @@ public class Controller extends HttpServlet {
 			disp.forward(request, response);
 		}
 	}
+	
+	private String getFileName(Part part) {
+	    String partHeader = part.getHeader("content-disposition");
+	    //log.info("Part Header = " + partHeader);
+	    for (String cd : part.getHeader("content-disposition").split(";")) {
+	      if (cd.trim().startsWith("filename")) {
+	        return cd.substring(cd.indexOf('=') + 1).trim()
+	            .replace("\"", "");
+	      }
+	    }
+	    return null;
+
+	  }
+	
+	private void createDirectoryIfNeeded(String directoryName)
+	{
+	  File theDir = new File(directoryName);
+
+	  // if the directory does not exist, create it
+	  if (!theDir.exists())
+	  {
+	    log.info("creating directory: " + directoryName);
+	    theDir.mkdir();
+	  }
+	}
+	
+	private boolean mapExists(String filePath) {
+		File file = new File(filePath);
+		return file.exists();
+	}
+
 }
