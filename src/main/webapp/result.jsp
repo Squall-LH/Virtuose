@@ -11,14 +11,12 @@
 </head>
 <body>
 
-<p>
 <%
 String mapExists = (String)session.getAttribute("mapExists");
 if(mapExists != null) {
 	out.println("<p>"+mapExists+"</p>");
 }
 %>
-</p>
 <ol>
 <% Map<String,String> map = (Map)session.getAttribute("listMap");
 int i = 0;

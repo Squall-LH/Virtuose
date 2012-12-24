@@ -72,7 +72,8 @@ public class Controller extends HttpServlet {
 			Part p2 = request.getPart("keywords");
 			Scanner s = new Scanner(p2.getInputStream());
 			keywords = s.nextLine(); // read filename from stream
-
+			log.debug("Controller: keywords: " + keywords);
+			
 			// get filename to use on the server
 			String fileName = getFileName(p1);
 		    log.info("File name : " + fileName);
