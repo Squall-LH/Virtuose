@@ -79,10 +79,9 @@ public class Controller extends HttpServlet {
 			String outputfile = saved_map_folder+fileName; // get path on the server
 			createDirectoryIfNeeded(saved_map_folder);
 			
-			if(mapExists(outputfile)) {
+			if(mapNameExists(outputfile)) {
 				session.setAttribute("mapExists", "La carte existe déjà dans la base.");
-			}
-			else {
+			} else {
 				FileOutputStream os = new FileOutputStream(outputfile);
 
 				// write bytes taken from uploaded file to target file
@@ -166,7 +165,7 @@ public class Controller extends HttpServlet {
 	  }
 	}
 	
-	private boolean mapExists(String filePath) {
+	private boolean mapNameExists(String filePath) {
 		File file = new File(filePath);
 		return file.exists();
 	}
