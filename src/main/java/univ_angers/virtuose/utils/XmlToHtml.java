@@ -38,7 +38,11 @@ public class XmlToHtml {
 			
 			// On ignore la racine car Extract rend une racine au contenu vide pour le moment.
 			if(racine.getChildren().size() == 1) {
-				racine = (Element)racine.getChildren().get(0);
+				Element new_racine = (Element)racine.getChildren().get(0);
+				document.detachRootElement();
+				new_racine.detach();
+				document.setRootElement(new_racine);
+				racine = new_racine;
 			}
 			
 			convert2(document, racine);
@@ -79,7 +83,7 @@ public class XmlToHtml {
 			}
 		}
 
-		result = new XMLOutputter().outputString(doc);
+		result = docToString(doc);
 	}
 
 	static void convert3(Document doc, Element node) {
@@ -107,9 +111,18 @@ public class XmlToHtml {
 			}
 		}
 		
-		result = new XMLOutputter().outputString(doc);
+		result = docToString(doc);
 	}
 
+	private static String docToString(Document doc) {
+		StringBuffer sresult = new StringBuffer(new XMLOutputter().outputString(doc));
+		int strind = sresult.toString().indexOf('\n');  
+        if (strind != -1) {  
+        	sresult.delete(0, strind);  
+        }  
+        return sresult.toString();
+	}
+	
 	static void elemToHtml(Element e) {
 		if (e.getName().equals("node")) {			
 			Element parent = e.getParentElement();
