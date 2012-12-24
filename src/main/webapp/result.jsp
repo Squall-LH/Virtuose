@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"
     import="java.util.Map"
     %>
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>js-mindmap demo - JavaScript Mindmap</title>
+  <title>Liste de résultats</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  </head>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 <body>
 
 <ul>

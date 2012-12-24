@@ -51,12 +51,6 @@ public class XmlToHtml {
 		List<Element> lNode = new ArrayList<Element>();
 		lNode.add(node);
 		
-		
-		if (node.getAttributeValue("class") != null) {
-			title = node.getAttributeValue("TEXT");
-			log.debug("-----------------------------------------"+title);
-		}
-		
 		elemToHtml(node);
 		Queue<Element> stack = new ArrayDeque<Element>();
 
@@ -67,11 +61,6 @@ public class XmlToHtml {
 
 		while (stack.peek() != null) {
 			Element e = stack.poll();
-			
-			if (e.getAttributeValue("class") != null) {
-				title = e.getAttributeValue("TEXT");
-				log.debug("-----------------------------------------"+title);
-			}
 			
 			elemToHtml(e);
 			Iterator<Element> e_i = e.getChildren().iterator();
@@ -116,7 +105,7 @@ public class XmlToHtml {
 	}
 
 	static void elemToHtml(Element e) {
-		if (e.getName().equals("node")) {
+		if (e.getName().equals("node")) {			
 			Element parent = e.getParentElement();
 			if (parent != null && !parent.getName().equals("ul")) {
 				List<Element> content = parent.removeContent();
@@ -139,6 +128,14 @@ public class XmlToHtml {
 			if (text.length() < 2) {
 				text = "default";
 			}
+			
+			if (e.getAttributeValue("class") != null) {
+				title = e.getAttributeValue("TEXT");
+				log.debug("-----------------------------------------"+title);
+				a.setAttribute("class", "result");
+				e.removeAttribute("class");
+			}
+			
 			a.setText(text);
 			e.addContent(0, a);
 			e.removeAttribute("TEXT");
