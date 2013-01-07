@@ -25,7 +25,7 @@ import univ_angers.virtuose.utils.XmlToHtml;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(Controller.class);
-	private static String saved_map_folder = "src/ressources/saved_map/";
+	private static String saved_map_folder = "src/main/resources/saved_map/";
 
 	public Controller() {
 		super();
