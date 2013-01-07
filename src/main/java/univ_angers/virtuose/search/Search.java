@@ -3,6 +3,7 @@ package univ_angers.virtuose.search;
 import univ_angers.virtuose.rendu.Extract;
 import univ_angers.virtuose.utils.Writer;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -27,13 +28,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 
 public class Search {
 	
-	//private static Logger log = Logger.getLogger(Search.class);
+	private static Logger log = Logger.getLogger(Search.class);
 
 	public void index(String file){
 		try{
@@ -86,7 +86,7 @@ public class Search {
 		    for(int i=0;i<hits.length;++i) {
 		      int docId = hits[i].doc;
 		      Document d = searcher.doc(docId);
-		      System.out.println((i + 1) + ". " + d.get("title")+ "\n" + d.get("document") + "\n" + d.get("content")+"\n"+d.get("id")+"\n"+d.get("id_parent")+"\n"+hits[i].score);
+		      log.info((i + 1) + ". " + d.get("title")+ "\n" + d.get("document") + "\n" + d.get("content")+"\n"+d.get("id")+"\n"+d.get("id_parent")+"\n"+hits[i].score);
 		      founded.add(d);
 		    }
 	

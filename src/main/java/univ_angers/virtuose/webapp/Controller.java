@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -49,14 +50,11 @@ public class Controller extends HttpServlet {
 
 		} else if (action.equals("show")) {
 			int id = Integer.parseInt((String) request.getParameter("id"));
-			Map<String, String> listMap = (Map<String, String>) session.getAttribute("listMap");
+			List<String> content = (List<String>) session.getAttribute("content");
 			int i = 0;
-			for (Map.Entry<String, String> entry : listMap.entrySet()) {
-				String key = entry.getKey();
-				String value = entry.getValue();
-				log.debug("show" + value);
+			for (String c : content) {
 				if (i == id) {
-					session.setAttribute("map", value);
+					session.setAttribute("map", c);
 				}
 				i++;
 			}
@@ -111,7 +109,6 @@ public class Controller extends HttpServlet {
 			log.info("results: " + docs.size());
 			for (Document d : docs) {
 				String tmp = "";
-				
 				try {
 					tmp = Extract.extract(d.get("document"), d.get("id"));
 				} catch (Exception e) {
@@ -121,23 +118,22 @@ public class Controller extends HttpServlet {
 				xmls.add(tmp);
 			}
 
-			Map<String, String> listMap = new HashMap();
+			List<String> title = new ArrayList<String>();
+			List<String> content = new ArrayList<String>();
 
 			for (String xml : xmls) {
 				String result = xml;
 
 				log.debug("Controller:result: " + result);
 				XmlToHtml.start(result);
-				String title = XmlToHtml.title;
-				String map = XmlToHtml.result;
-				// log.debug("title: "+ title);
-				// log.debug("map: "+ map);
-				listMap.put(title, map);
+				title.add(XmlToHtml.title);
+				content.add(XmlToHtml.result);
 			}
 
 			// On supprime la map indexée
 			deleteFolder(new File("src/ressources/index"));
-			session.setAttribute("listMap", listMap);
+			session.setAttribute("title", title);
+			session.setAttribute("content", content);
 			session.setAttribute("keywords", keywords);
 
 			// On supprime la map

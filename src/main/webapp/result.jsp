@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.Map"
+    import="java.util.List"
     %>
 <!DOCTYPE html>
 <html>
@@ -11,20 +11,13 @@
 </head>
 <body>
 
-<%
-String mapExists = (String)session.getAttribute("mapExists");
-if(mapExists != null) {
-	out.println("<p>"+mapExists+"</p>");
-}
-%>
 <ol>
-<% Map<String,String> map = (Map)session.getAttribute("listMap");
+<% List<String> title = (List)session.getAttribute("title");
+List<String> content = (List)session.getAttribute("content");
 int i = 0;
-for (Map.Entry<String, String> entry : map.entrySet()) {
-    String key = entry.getKey();
-    String value = entry.getValue();
-    out.println("<li><a href=\"controller?action=show&id="+i+"\">"+key+"</a></li>");
-    i++;
+for(String t : title) {
+    out.println("<li><a href=\"controller?action=show&id="+i+"\">"+t+"</a></li>");
+	i++;
 }
 %>
 
