@@ -19,18 +19,18 @@ import org.xml.sax.helpers.DefaultHandler;
  
 public class Writer {
  
-   public static int countFile = 1;
-   public static String prefName;
-   public static ArrayList<String> parcours;
-   public static Stack<String> id_parent;
-   public static int nbnoeud_o;
-   public static int profondeur;
-   public static int  nbcount = 0;
+   public int countFile = 1;
+   public String prefName;
+   public ArrayList<String> parcours;
+   public Stack<String> id_parent;
+   public int nbnoeud_o;
+   public int profondeur;
+   public int  nbcount = 0;
    
    
-   public static ArrayList<Document> docs = new ArrayList<Document>();
+   public ArrayList<Document> docs = new ArrayList<Document>();
 		   
-   public static void proceed(String filePath) {
+   public void proceed(String filePath) {
 	   final String parsedFile = filePath;
 	   
 	   prefName = (new File(parsedFile)).getName().replace('.', '_');

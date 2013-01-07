@@ -35,7 +35,7 @@ public class Search {
 	
 	//private static Logger log = Logger.getLogger(Search.class);
 
-	public static void index(String file){
+	public void index(String file){
 		try{
 			FrenchAnalyzer analyzer = new FrenchAnalyzer(Version.LUCENE_40);
 			String indexpath = System.getProperty("user.dir")+"/src/ressources/index";
@@ -44,8 +44,9 @@ public class Search {
 	
 		    IndexWriter w = new IndexWriter(index, config);
 			
-			Writer.proceed(file);
-		    ArrayList<Document> documents = new ArrayList<Document> (Writer.docs);
+		    Writer writer = new Writer();
+			writer.proceed(file);
+		    ArrayList<Document> documents = new ArrayList<Document> (writer.docs);
 		    
 		    for( Document d: documents){
 		    	w.addDocument(d);
@@ -61,7 +62,7 @@ public class Search {
 	 * @param querystr requête au format String
 	 * @return a list of all 10 documents that match the query result
 	 */
-	public static ArrayList<Document> search( String querystr){
+	public ArrayList<Document> search( String querystr){
 		// the "title" arg specifies the default field to use
 	    // when no field is explicitly specified in the query.
 		ArrayList<Document> founded=new ArrayList<Document>();
@@ -102,12 +103,14 @@ public class Search {
 	
 	
   public static void main(String[] args) throws Exception {
-	index(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
+	Search search = new Search();
+	search.index(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
 	
-	Writer.proceed(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
+	Writer writer = new Writer();
+	writer.proceed(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");
     // 2. query
     String querystr = args.length > 0 ? args[0] : "matériel ALCATEL";
-    ArrayList<Document> docs = search(querystr);
+    ArrayList<Document> docs = search.search(querystr);
     ArrayList<String> xmls = new ArrayList<String>();
     /**
      * Generate all xml documents according to the lucene doc that match the request

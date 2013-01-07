@@ -49,8 +49,7 @@ public class Controller extends HttpServlet {
 
 		} else if (action.equals("show")) {
 			int id = Integer.parseInt((String) request.getParameter("id"));
-			Map<String, String> listMap = (Map<String, String>) session
-					.getAttribute("listMap");
+			Map<String, String> listMap = (Map<String, String>) session.getAttribute("listMap");
 			int i = 0;
 			for (Map.Entry<String, String> entry : listMap.entrySet()) {
 				String key = entry.getKey();
@@ -92,23 +91,27 @@ public class Controller extends HttpServlet {
 			}
 
 			// on traite le .mm
-			Search.index(outputfile);
-			Writer.proceed(outputfile);
+			Search search = new Search();
+			search.index(outputfile);
+			Writer writer = new Writer();
+			writer.proceed(outputfile);
 			os.close();
 
 			s.close();
 
 			// 2. query
 			String querystr = keywords;
-			ArrayList<Document> docs = Search.search(querystr);
+			ArrayList<Document> docs = search.search(querystr);
 			ArrayList<String> xmls = new ArrayList<String>();
 			/**
 			 * Generate all xml documents according to the lucene doc that match
 			 * the request
 			 */
 			// Document d = docs.get(0);
+			log.info("results: " + docs.size());
 			for (Document d : docs) {
 				String tmp = "";
+				
 				try {
 					tmp = Extract.extract(d.get("document"), d.get("id"));
 				} catch (Exception e) {
