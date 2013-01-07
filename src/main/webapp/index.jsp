@@ -14,7 +14,7 @@
 Entre une liste de mot-clés séparés par un espace.<br>
 Entre une carte au format freemap (.mm).<br><br>
 
-Obtiens une liste d'arbres correspondants à la requête, les résultats étant classés par ordre décroissant de pertinence.
+Le résultat de la recherche sera une liste d'arbres classés par ordre décroissant de pertinance.
 </p>
 <form enctype="multipart/form-data" action="controller?action=search" method="post"> 
 <p>
