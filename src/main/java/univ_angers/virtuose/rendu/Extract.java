@@ -67,6 +67,7 @@ public class Extract {
 		String attributes = "ID=\""+e.getAttribute("ID")+"\" TEXT=\""+e.getAttribute("TEXT")+"\"";
 		if(e.getAttribute("ID").equals(res_id)){
 			attributes +=" class=\"result\"";
+			attributes +=" BACKGROUND_COLOR=\"#F0FFF0\"";
 		}
 		ret +="<node "+attributes+">\n";
 		if(childs.getLength()>0){
