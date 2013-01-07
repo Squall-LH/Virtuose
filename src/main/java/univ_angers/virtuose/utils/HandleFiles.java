@@ -17,7 +17,6 @@ public class HandleFiles {
 		this.filePath = fP;
 	}
 	
-	
 	public void handle(){
 		try{
 			File f = new File(filePath);
