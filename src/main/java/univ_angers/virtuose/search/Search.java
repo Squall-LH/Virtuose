@@ -38,10 +38,12 @@ public class Search {
 	public void index(String file){
 		try{
 			FrenchAnalyzer analyzer = new FrenchAnalyzer(Version.LUCENE_40);
+			
+			
 			String indexpath = System.getProperty("user.dir")+"/src/ressources/index";
 		    Directory index = FSDirectory.open(new File(indexpath));
 		    IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_40, analyzer);
-	
+		    
 		    IndexWriter w = new IndexWriter(index, config);
 			
 		    Writer writer = new Writer();
