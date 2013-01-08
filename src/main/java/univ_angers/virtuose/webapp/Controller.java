@@ -26,6 +26,7 @@ public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(Controller.class);
 	private static String saved_map_folder = "src/ressources/saved_map/";
+	private static String tmp_map_visualisation = "src/main/webapp/tmp/";
 
 	public Controller() {
 		super();
@@ -57,10 +58,14 @@ public class Controller extends HttpServlet {
 				String value = entry.getValue();
 				log.debug("show" + value);
 				if (i == id) {
-					session.setAttribute("map", value);
+					//session.setAttribute("map", value);
+					String mapPath = createTmpVisualisation(i,value);
+					session.setAttribute("map",mapPath);
+					session.setAttribute("mapContent",value);
 				}
 				i++;
 			}
+			
 			disp = request.getRequestDispatcher("show.jsp");
 			disp.forward(request, response);
 
@@ -126,7 +131,8 @@ public class Controller extends HttpServlet {
 				log.debug("Controller:result: " + result);
 				XmlToHtml.start(result);
 				String title = XmlToHtml.title;
-				String map = XmlToHtml.result;
+				//String map = XmlToHtml.result;
+				String map = result;
 				// log.debug("title: "+ title);
 				// log.debug("map: "+ map);
 				listMap.put(title, map);
@@ -180,10 +186,56 @@ public class Controller extends HttpServlet {
 		// if the directory does not exist, create it
 		if (!theDir.exists()) {
 			log.info("creating directory: " + directoryName);
-			theDir.mkdir();
+			boolean c = theDir.mkdir();
+			if (!c){
+			    log.error("directory not created");
+			}
+		}else{
+		    log.info("the directory "+directoryName+" already exists");
 		}
 	}
 
+    private String createTmpVisualisation(int id, String xmlContent){
+        String xmlName = "tmp"+id+".xml";
+        log.info("creating tempory file ("+xmlName+") to visualised result.");
+        String outputfile = tmp_map_visualisation + xmlName; // get path on the
+																// server
+		createDirectoryIfNeeded(tmp_map_visualisation);
+
+		try{
+            FileOutputStream os = new FileOutputStream(outputfile);
+            /*FileWriter os = new FileWriter(outputfile);
+            BufferedWriter out = new BufferedWriter(os);
+            out.*/
+            os.write(new String().getBytes());
+
+		    // write bytes taken from uploaded file to target file
+			/*int chunkSize=50;
+			String toWrite;
+			while (xmlContent.length()>0) {
+			    if(xmlContent.length()<50){
+			        chunkSize = xmlContent.length();
+			    }
+			    toWrite = xmlContent.substring(0,chunkSize);
+			    if(xmlContent.length()==chunkSize){
+			        xmlContent="";
+			    }else{
+			        xmlContent = xmlContent.substring(chunkSize+1);
+			    }
+				//out.write(toWrite);
+				os.write(toWrite.getBytes());
+			}*/
+			os.write(xmlContent.getBytes());
+			//out.close();
+			os.close();
+			log.info("File created");
+			return xmlName;
+		}catch (Exception e){//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
+        return null;
+    }
+    
 	private boolean mapNameExists(String filePath) {
 		File file = new File(filePath);
 		return file.exists();
