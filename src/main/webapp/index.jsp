@@ -19,9 +19,9 @@ Le résultat de la recherche sera une liste d'arbres classés par ordre décrois
 <form enctype="multipart/form-data" action="controller?action=search" method="post"> 
 <p>
 Keywords
-<input type="text" name="keywords"><br>
+<input type="text" name="keywords" required><br>
 Map:
-<input type="file" name="map"><br>
+<input type="file" name="map" required><br>
 <input type="submit">
 </p>
 </form>
