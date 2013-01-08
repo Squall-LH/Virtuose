@@ -1,0 +1,18 @@
+<node ID="ID_857269200" TEXT="">
+<node ID="ID_390305822" TEXT="Les missions">
+<node ID="ID_1599979345" TEXT="Commande de Matériel">
+<node ID="ID_185864521" TEXT="Commande simple">
+<node ID="ID_1929470527" TEXT="Les états : Etat 1 => Saisie commande, Etat 2 => Validation RAI, Etat 3 => Prise par PLR, Etat 4 => Matériel en cours de livraison, Etat 5 => Matériel retiré par le technicien">
+<node ID="ID_1978914868" TEXT="Etat 3 en plus code de couleur">
+<node ID="ID_230916240" TEXT="BLEU : Matériel arrivé au magasin">
+<node ID="ID_146091698" TEXT="Edition Bon Livraison">
+<node ID="ID_1349491809" TEXT="Dossier Technicien" class="result">
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
