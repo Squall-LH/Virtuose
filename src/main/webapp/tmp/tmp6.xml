@@ -1,20 +1,9 @@
 <node ID="ID_857269200" TEXT="">
-<node ID="ID_390305822" TEXT="Les missions">
-<node ID="ID_1599979345" TEXT="Commande de Matériel">
-<node ID="ID_346290272" TEXT="">
-<node ID="ID_804415879" TEXT="Commande complexe">
-<node ID="ID_1700552218" TEXT="Le matériel est regroupé dans une seule appelation" class="result">
-<node ID="ID_965810130" TEXT="PROBLEME : On ne sait pas si tout le matériel est commandé">
-<node ID="ID_1232612313" TEXT="SOLUTION 1 : Appeler la plateforme de Bordeau pour qu'elle transmette la liste du matériel pour comparé avec OCTAVE">
-</node>
-<node ID="ID_1771087896" TEXT="SOLUTION 2 : Si matériels livrés appeler le magasinier">
-</node>
-<node ID="ID_744304830" TEXT="CONSEQUENCE : Ca passe jamais à l'état 4">
-</node>
-</node>
-</node>
-</node>
-</node>
+<node ID="ID_351143532" TEXT="La fonction">
+<node ID="ID_1025389210" TEXT="Le contexte de la fonction">
+<node ID="ID_1318276986" TEXT="Je travaille en mode affaire.">
+<node ID="ID_1132837801" TEXT="Je suis le seul interlocuteur pour une commande d'un client" class="result" BACKGROUND_COLOR="#FF00FF">
+</node></node>
 </node>
 </node>
 </node>

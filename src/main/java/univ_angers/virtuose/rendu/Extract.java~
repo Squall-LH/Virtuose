@@ -168,22 +168,24 @@ public class Extract {
 		    read_ids.add(e.getAttribute("ID"));
 		    String attributes = "ID=\""+e.getAttribute("ID")+"\" TEXT=\""+e.getAttribute("TEXT")+"\"";
 		    if(res_ids.contains(e.getAttribute("ID"))){
-		        // e est un des identifiants à extraire
-		        // il faudra donc aussi extraire ses "autres" descendants
+		        
 		        int index = res_ids.indexOf(e.getAttribute("ID"));
 			    attributes +=" class=\"result\" BACKGROUND_COLOR=\"#FF00FF\"";
 			    res_ids.remove(index);
-
-                // ajout de e au contenu xml
+			    //ret = "<node "+attributes+">\n"+s+displayChilds(e)+"</node>\n";
                 xmlText = "<node "+attributes+">\n"+xmlText+"</node>\n";
-                // ajout de ses descendants au contenu xml
                 displayChilds(e);
 		    }else{
 		        xmlText = "<node "+attributes+">\n"+xmlText+"</node>\n";
 		    }
+			//ret="<node "+attributes+" >\n"+s+"</node>\n";
 		}
-		
-		// si le père de e n'est pas la racine on l'ajoute au contenu
+		/*if(pe.equals(r)){
+			return ret;
+		}else{
+			return displayParents(pe, r, ret);
+		}*/
+		System.out.println("display parent :\n"+xmlText);
 		if(!pe.equals(r)){
 		    displayParents(pe,r);
 		}

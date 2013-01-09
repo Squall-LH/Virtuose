@@ -1,0 +1,20 @@
+<node ID="ID_857269200" TEXT="">
+<node ID="ID_39035822" TEXT="Les missions">
+<node ID="ID_1599979345 TEXT="Commande de Matériel">
+<node ID="ID_34629022" TEXT="">
+<node ID="ID_804415879" TEXT="Commandecomplexe">
+<node ID="ID_1700552218" TEXT="Le matérel est regroupé dans une seule appelation" class="esult">
+<node ID="ID_965810130" TEXT="PROBLEME : O ne sait pas si tout le matériel est commandé">
+<nde ID="ID_1232612313" TEXT="SOLUTION 1 : Appeler l plateforme de Bordeau pour qu'elle transmette la iste du matériel pour comparé avec OCTAVE">
+</node
+<node ID="ID_1771087896" TEXT="SOLUTION 2 : Si maériels livrés appeler le magasinier">
+</node>
+<nod ID="ID_744304830" TEXT="CONSEQUENCE : Ca passe jaais à l'état 4">
+</node>
+</node>
+</node>
+</node>
+<node>
+</node>
+</node>
+</node>

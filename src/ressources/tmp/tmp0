@@ -1,0 +1,146 @@
+<node ID="ID_857269200" TEXT="">
+<node ID="ID_39035822" TEXT="Les missions" class="result">
+<node ID"ID_151411633" TEXT="Analyse de Dossier - Prise encharge">
+</node>
+<node ID="ID_1599979345" TEXT="Comande de Matériel">
+<node ID="ID_185864521" TEXT="ommande simple">
+<node ID="ID_1085611485" TEXT="OCAVE (Appli commercial matériel vendu)">
+<node ID="D_883021823" TEXT="Edition et enregistrement">
+</nde>
+</node>
+<node ID="ID_1801860467" TEXT="Command matériel SCALER (Commande matériel national)">
+<nde ID="ID_422622439" TEXT="Saisir : Nom, Téléphone N° Correspondant, N° Dossier">
+</node>
+<node ID="D_1282014845" TEXT="Ajouter le fichier OCTAVE">
+</ode>
+</node>
+<node ID="ID_1929470527" TEXT="Les étts : Etat 1 => Saisie commande, Etat 2 => Validatin RAI, Etat 3 => Prise par PLR, Etat 4 => Matérielen cours de livraison, Etat 5 => Matériel retiré pr le technicien">
+<node ID="ID_386057004" TEXT="Ett 4 important car date prévisionnelle de livraison>
+<node ID="ID_1181671899" TEXT="Pour la prise de endez vous client">
+</node>
+</node>
+<node ID="ID_178914868" TEXT="Etat 3 en plus code de couleur">
+<ode ID="ID_1970897979" TEXT="ORANGE : Pris en compe par le fournisseur (livré plateforme nationale"></node>
+<node ID="ID_946789521" TEXT="ROSE : Pris ur stock">
+</node>
+<node ID="ID_230916240" TEXT="BEU : Matériel arrivé au magasin">
+<node ID="ID_14691698" TEXT="Edition Bon Livraison">
+<node ID="ID_349491809" TEXT="Dossier Technicien">
+</node>
+</noe>
+</node>
+</node>
+</node>
+<node ID="ID_1692785474 TEXT="Tout le matériel est répertorié sur plusieus lignes">
+</node>
+<node ID="ID_940492372" TEXT="Vlidation => PLR (commande matériel UI)">
+</node>
+<ode ID="ID_1940226873" TEXT="Vigilance sur matérie ALCATEL : Livraison possible, si la commande est agué compléte">
+</node>
+</node>
+<node ID="ID_182197573" TEXT="Suivi de commande">
+</node>
+<node ID="D_346290272" TEXT="">
+<node ID="ID_804415879" TEXT"Commande complexe">
+<node ID="ID_1112263991" TEXT"OCTAVE (Appli commercial matériel vendu)">
+<node D="ID_1509090243" TEXT="Edition et enregistrement"
+</node>
+<node ID="ID_1124553768" TEXT="ACTIS (ALCTEL) code logiciel donné par l'auteur OCTAVE">
+<noe ID="ID_1700861763" TEXT="Envoyer à ALCATEL pour révoir le matériel">
+</node>
+</node>
+</node>
+<nodeID="ID_1225533976" TEXT="Commande matériel SCALER Commande matériel national)">
+<node ID="ID_37098155" TEXT="Saisir : Nom, Téléphone, N° Correspondant N° Dossier">
+</node>
+<node ID="ID_234622890" TEXT"Ajouter le fichier OCTAVE">
+</node>
+<node ID="ID_68521905" TEXT="Taguer le type fournisseur">
+</nod>
+<node ID="ID_621829874" TEXT="Pour ALCATEL mettr le numéro ACTIS">
+</node>
+</node>
+<node ID="ID_170552218" TEXT="Le matériel est regroupé dans une sule appelation">
+<node ID="ID_965810130" TEXT="PROLEME : On ne sait pas si tout le matériel est commndé">
+<node ID="ID_1232612313" TEXT="SOLUTION 1 : ppeler la plateforme de Bordeau pour qu'elle transette la liste du matériel pour comparé avec OCTAVE>
+</node>
+<node ID="ID_1771087896" TEXT="SOLUTION  : Si matériels livrés appeler le magasinier">
+</nde>
+<node ID="ID_744304830" TEXT="CONSEQUENCE : Capasse jamais à l'état 4">
+</node>
+</node>
+</node>
+node ID="ID_823287754" TEXT="Validation => PLR (comande matériel UI)">
+</node>
+</node>
+</node>
+</nod>
+<node ID="Freemind_Link_1142994528" TEXT="...">
+/node>
+<node ID="ID_125388823" TEXT="Prise de Rendz vous Interventions 20 % mois">
+<node ID="ID_4939383" TEXT="Montage dossier technicien">
+<node ID="D_169682301" TEXT="Je positionne le technicien surle plan de charge en fonction d'une compêtence *"><node ID="ID_1607569543" TEXT=" - 40 heures de venu => Affaire simple">
+</node>
+<node ID="ID_160494328" TEXT="+ 40 heures de vendu => Affaire complexe>
+</node>
+</node>
+<node ID="ID_1755296475" TEXT="Cnnaitre la complexité du type de matériel">
+<node D="ID_1824608422" TEXT="Régle définie au national"
+</node>
+<node ID="ID_10365467" TEXT="- Affaire coplexe : Matériel + LAN (informatique) + plus de 40heures vendus">
+</node>
+<node ID="ID_367516874" TET="Affaire simple : Matériel (PABX) + moins de 40 eures vendus">
+</node>
+</node>
+<node ID="ID_75644993" TEXT="Les délais et le type de matériel sont ls choses à regarder pour toute prise de rendez vou">
+</node>
+</node>
+<node ID="ID_466493303" TEXT="Pise de rendez vous">
+<node ID="ID_1399623708" TEXT"1er appli : NEWADA (Plan Charge Technicien) : Parfiltre">
+<node ID="ID_1668771876" TEXT="Compêtence(par rapport à la commande)">
+</node>
+<node ID="ID1705383725" TEXT="Zone géographique">
+</node>
+<nod ID="ID_842813802" TEXT="Disponibilité">
+</node>
+<node>
+<node ID="ID_719360735" TEXT="Pour bien maitiser l'appli, il faut qu'elle soit bien initialisépar le chef de groupe">
+</node>
+<node ID="ID_49734894" TEXT="* Sinon je dois filtrer moi même les copétences par mon expérience">
+</node>
+<node ID="ID1914540430" TEXT="Pour palier au manque d'info, jetrouve le technicien en interrogeant le chef de grupe (problème que je rencontre 1 fois sur 3)">
+</nde>
+<node ID="ID_1356520144" TEXT="Préconisation :Bien remplir le plan de charge avec les zones géogaphiques et les compêtences">
+</node>
+<node ID="ID570682132" TEXT="2ème appli : GPC (Plan charge suport ADSL/Lignes) : Par filtre">
+</node>
+<node ID="D_1541123722" TEXT="Si je ne trouve pas de technicen : je fais une alerte (fichier excel) par mail àla conduite d'activité entreprise qui doit donner ne réponse en 24 heures pour placer un technicien ans le plan de charge">
+<node ID="ID_812062085" TET="Dans le fichier : Je note les compêtences, la zne, le type de plan charge et les dates">
+</node>
+/node>
+<node ID="ID_597031088" TEXT="Si TechnicienOK Je place l'intervention dans le plan charge">
+<node>
+<node ID="ID_1271622879" TEXT="Si pas techniien => Escalade vers">
+<node ID="ID_1687240184" TET="Manager RAI">
+</node>
+<node ID="ID_1065241084" EXT="Manager CA">
+</node>
+<node ID="ID_1435030319"TEXT="Chef groupe technicien">
+</node>
+</node>
+<noe ID="ID_74838679" TEXT="Transmission aux technicins par l'appli MADDO => Etech">
+</node>
+</node>
+<nde ID="ID_1928118492" TEXT="Contact Client">
+<nodeID="ID_315219882" TEXT="Pour confirmation date">
+<node>
+<node ID="ID_251938153" TEXT="Si non accord vec date (reprendre le processus de prise de rende vous)">
+</node>
+<node ID="ID_1870754270" TEXT="Pa de possibilité de date : Renégociation entre chefprojet => Client">
+</node>
+</node>
+</node>
+<node I="ID_674249908" TEXT="Gestion des escalades (urgene) 20 %">
+</node>
+</node>
+</node>

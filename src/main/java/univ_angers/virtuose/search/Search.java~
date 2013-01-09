@@ -116,14 +116,14 @@ public class Search {
      * Generate all xml documents according to the lucene doc that match the request
      */
     //Document d = docs.get(0);
-    /*for (Document d : docs){
+    for (Document d : docs){
     	String tmp = Extract.extract(d.get("document"), d.get("id"));
     	xmls.add(tmp);
     }
     
     for (String s : xmls){
     	System.out.println(s);
-    }*/
+    }
     
   }
 }

@@ -127,13 +127,21 @@ public class Controller extends HttpServlet {
 			    
 			}
 			log.info("results displayed : "+xmls.size());
-			
+			/*for (Document d : docs) {
+				String tmp = "";
+				try {
+					tmp = Extract.extract(d.get("document"), d.get("id"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				xmls.add(tmp);
+			}*/
 
 			List<String> title = new ArrayList<String>();
 			List<String> content = new ArrayList<String>();
 
 			for (ArrayList<String> xml : xmls) {
-			    //chaque objet contenu dans xmls contiendra un titre et du contenu xml
 			    String xmlTitle = xml.get(0);
 				String result = xml.get(1);
 
