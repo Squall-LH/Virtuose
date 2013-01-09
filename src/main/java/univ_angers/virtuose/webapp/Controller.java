@@ -51,8 +51,6 @@ public class Controller extends HttpServlet {
 		if (action == null) {
 			
 		} else if(action.equals("full_map")) {
-			Integer id = Integer.parseInt((String) request.getParameter("id"));
-
 			String map = (String)session.getAttribute("mapContent");
 
 			log.debug("full_map_path: " + full_map_path);
@@ -64,11 +62,26 @@ public class Controller extends HttpServlet {
 			
 			disp = request.getRequestDispatcher("show_full.jsp");
 			disp.forward(request, response);
-		} else if (action.equals("show")) {
-			Integer id = Integer.parseInt((String) request.getParameter("id"));
+		} else if(action.equals("show")) {
+			List<String> title = (List<String>)session.getAttribute("title");
+			List<String> content = (List<String>)session.getAttribute("content");
+	
+			
 			String ids = (String) request.getParameter("id");
+			if(ids == null)
+				ids = "0";
 			session.setAttribute("ids", ids);
-			List<String> content = (List<String>) session.getAttribute("content");
+			Integer id = -1;
+			
+			
+			if(ids != null) {
+				try {
+					id = Integer.parseInt((String) request.getParameter("id"));	
+				} catch(Exception e) {
+					id = 0;
+				}
+			}
+				
 			int i = 0;
 			for (String c : content) {
 				if (i == id) {
@@ -76,11 +89,12 @@ public class Controller extends HttpServlet {
 					String mapPath = createTmpVisualisation(i,c);
 					session.setAttribute("map",mapPath);
 					session.setAttribute("mapContent",c);
+					session.setAttribute("current_title", title.get(i));
 				}
 				i++;
 			}
 			
-			disp = request.getRequestDispatcher("show.jsp");
+			disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);
 
 		} else if (action.equals("search")) {
@@ -174,7 +188,34 @@ public class Controller extends HttpServlet {
 			os = new FileOutputStream(outputfile);
 			os.write('v');
 			os.close();*/
-
+			
+			String ids = (String) request.getParameter("id");
+			if(ids == null)
+				ids = "0";
+			session.setAttribute("ids", ids);
+			Integer id = -1;
+			
+			
+			if(ids != null) {
+				try {
+					id = Integer.parseInt((String) request.getParameter("id"));	
+				} catch(Exception e) {
+					id = 0;
+				}
+			}
+				
+			int i = 0;
+			for (String c : content) {
+				if (i == id) {
+					//session.setAttribute("map", value);
+					String mapPath = createTmpVisualisation(i,c);
+					session.setAttribute("map",mapPath);
+					session.setAttribute("mapContent",c);
+					session.setAttribute("current_title", title.get(i));
+				}
+				i++;
+			}
+			
 			disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);
 		}

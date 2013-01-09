@@ -11,10 +11,10 @@
 <h2>Virtuose</h2>
 
 <p id="description">
-Entre une liste de mot-clés séparés par un espace.<br>
-Entre une carte au format freemap (.mm).<br><br>
+Entrez une liste de mot-clés séparés par un espace.<br>
+Entrez une carte au format Freemap (.mm).<br><br>
 
-Le résultat de la recherche sera une liste d'arbres classés par ordre décroissant de pertinance.
+Le résultat de la recherche sera une liste d'arbres classés par ordre décroissant de pertinence.
 </p>
 
 <form id="start" enctype="multipart/form-data" action="controller?action=search" method="post">
