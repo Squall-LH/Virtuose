@@ -18,6 +18,7 @@ import org.apache.lucene.document.Document;
 
 import univ_angers.virtuose.rendu.Extract;
 import univ_angers.virtuose.search.Search;
+import univ_angers.virtuose.utils.Full_Map;
 import univ_angers.virtuose.utils.Writer;
 import univ_angers.virtuose.utils.XmlToHtml;
 
@@ -32,7 +33,8 @@ public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(Controller.class);
 	private static String saved_map_folder = "src/main/resources/saved_map/";
-
+	private String full_map_path;
+	
 	public Controller() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,8 +55,20 @@ public class Controller extends HttpServlet {
 
 		if (action == null) {
 
+		} else if(action.equals("full_map")) {
+			Integer id = Integer.parseInt((String) request.getParameter("id"));
+			
+			String map = (String)session.getAttribute("map");
+			
+			log.debug("full_map_path: " + full_map_path);
+			Full_Map fMap = new Full_Map(full_map_path, map); 
+			session.setAttribute("full_map", fMap.getHightLighedMap());
+			disp = request.getRequestDispatcher("show_full.jsp");
+			disp.forward(request, response);
 		} else if (action.equals("show")) {
-			int id = Integer.parseInt((String) request.getParameter("id"));
+			Integer id = Integer.parseInt((String) request.getParameter("id"));
+			String ids = (String) request.getParameter("id");
+			session.setAttribute("ids", ids);
 			List<String> content = (List<String>) session.getAttribute("content");
 			int i = 0;
 			for (String c : content) {
@@ -65,7 +79,6 @@ public class Controller extends HttpServlet {
 			}
 			disp = request.getRequestDispatcher("show.jsp");
 			disp.forward(request, response);
-
 		} else if (action.equals("search")) {
 			// get access to file that is uploaded from client
 			Part p1 = request.getPart("map");
@@ -80,8 +93,9 @@ public class Controller extends HttpServlet {
 			// get filename to use on the server
 			String fileName = getFileName(p1);
 			log.info("File name : " + fileName);
-			String outputfile = saved_map_folder + fileName; // get path on the
-																// server
+			String outputfile = saved_map_folder + fileName;
+			this.full_map_path = outputfile;
+			
 			createDirectoryIfNeeded(saved_map_folder);
 
 			FileOutputStream os = new FileOutputStream(outputfile);
@@ -141,10 +155,11 @@ public class Controller extends HttpServlet {
 			session.setAttribute("content", content);
 			session.setAttribute("keywords", keywords);
 
-			// On supprime la map
+			// On supprime la map (ou pas, j'en ai besoin après pour l'action full_map)
+			/*
 			os = new FileOutputStream(outputfile);
 			os.write('v');
-			os.close();
+			os.close();*/
 
 			disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);

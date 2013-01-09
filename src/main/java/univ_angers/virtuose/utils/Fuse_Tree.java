@@ -12,7 +12,8 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
-/** Fusionne les chemins presque identique. */
+/** - Fusionne les chemins presque identique. 
+ */
 public class Fuse_Tree {
 	private static Logger log = Logger.getLogger(Fuse_Tree.class);
 
