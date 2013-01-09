@@ -10,7 +10,7 @@
 <body>
 <%String path = "."+(String)session.getAttribute("full_map_path");%>
 <applet code="freemind.main.FreeMindApplet.class"
-	archive="freemindbrowser.jar" width="100%" height="100%">
+	archive="freemindbrowser.jar" width="100%" height="400px">
 	<param name="type" value="application/x-java-applet;version=1.4">
 	<param name="scriptable" value="false">
 	<param name="modes" value="freemind.modes.browsemode.BrowseMode">
@@ -21,7 +21,6 @@
 	<param name="initial_mode" value="Browse">
 	<param name="selection_method" value="selection_method_direct">
 </applet>
-
 
 </body>
 </html>
