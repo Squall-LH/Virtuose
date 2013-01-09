@@ -31,6 +31,11 @@ import java.util.ArrayList;
 
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 
+/**
+ * Index les documents xml découpé dans lucene et permet aussi ensuite de faire une recherche dedans.
+ * @author etudiant
+ *
+ */
 public class Search {
 	
 	private static Logger log = Logger.getLogger(Search.class);
@@ -38,7 +43,6 @@ public class Search {
 	public void index(String file){
 		try{
 			FrenchAnalyzer analyzer = new FrenchAnalyzer(Version.LUCENE_40);
-			
 			
 			String indexpath = System.getProperty("user.dir")+"/src/ressources/index";
 		    Directory index = FSDirectory.open(new File(indexpath));
@@ -90,6 +94,10 @@ public class Search {
 		      Document d = searcher.doc(docId);
 		      log.info((i + 1) + ". " + d.get("title")+ "\n" + d.get("document") + "\n" + d.get("content")+"\n"+d.get("id")+"\n"+d.get("id_parent")+"\n"+hits[i].score);
 		      founded.add(d);
+		      // TODO GROUPER Document dont ID Commun
+		      
+		      // TODO Calcul distance entre diff résultats.
+		      // Montrer en plus par ex le nb de mot-clé trouvé dans tel résultat.
 		    }
 	
 		    // reader can only be closed when there
@@ -103,7 +111,8 @@ public class Search {
 		}
 	}
 	
-	
+
+	/** Permet de tester la classe */
   public static void main(String[] args) throws Exception {
 	Search search = new Search();
 	search.index(System.getProperty("user.dir")+"/src/ressources/Manceau-alain-rai-UIPL.mm");

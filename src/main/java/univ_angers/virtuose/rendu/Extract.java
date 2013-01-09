@@ -13,6 +13,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+/**
+ * Prend en param un id de noeud et fournit le chemin qu'il forme avec ses parents/fils dans la carte entière.
+ */
 public class Extract {
 	private static String res_id;
 	private static String card;

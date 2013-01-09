@@ -16,7 +16,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
- 
+/** Découpe le .mm en document xml plus petits.
+ *  
+ */
 public class Writer {
  
    public int countFile = 1;
@@ -29,7 +31,11 @@ public class Writer {
    
    
    public ArrayList<Document> docs = new ArrayList<Document>();
-		   
+
+   /** Découpe le .mm en document xml plus petits.
+    *  
+    * @param filePath
+    */
    public void proceed(String filePath) {
 	   final String parsedFile = filePath;
 	   

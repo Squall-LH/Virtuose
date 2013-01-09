@@ -21,6 +21,11 @@ import univ_angers.virtuose.search.Search;
 import univ_angers.virtuose.utils.Writer;
 import univ_angers.virtuose.utils.XmlToHtml;
 
+/**
+ * Servlet qui contient la logique controlant l'interface Web
+ * @author etudiant
+ *
+ */
 @WebServlet("/controller")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class Controller extends HttpServlet {

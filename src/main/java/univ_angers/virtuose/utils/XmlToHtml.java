@@ -15,6 +15,11 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * Prend un document XML en param et le convertit en liste HTML
+ * @author etudiant
+ *
+ */
 public class XmlToHtml {
 	private static Logger log = Logger.getLogger(Writer.class);
 
