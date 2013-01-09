@@ -7,6 +7,8 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import univ_angers.virtuose.search.Search;
 
 /**
+ * Permet de tester les classes sans passer par l'interface Web
+ * 
  * Utilisation :
  * -index .mm to index
  * -search keyword to search for
