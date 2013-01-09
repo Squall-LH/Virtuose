@@ -16,7 +16,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * Prend un document XML en param et le convertit en liste HTML
+ * Prend un document XML en param fournit par Writer et le convertit en liste HTML
  * @author etudiant
  *
  */
