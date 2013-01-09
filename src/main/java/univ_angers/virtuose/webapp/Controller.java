@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
+import univ_angers.virtuose.utils.Full_Map;
 import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,8 @@ public class Controller extends HttpServlet {
 	private static Logger log = Logger.getLogger(Controller.class);
 	private static String saved_map_folder = "src/main/resources/saved_map/";
 	private static String tmp_map_visualisation = "src/main/webapp/tmp/";
-
+	private String full_map_path;
+	
 	public Controller() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,9 +49,25 @@ public class Controller extends HttpServlet {
 		String keywords = "";
 
 		if (action == null) {
+			
+		} else if(action.equals("full_map")) {
+			Integer id = Integer.parseInt((String) request.getParameter("id"));
 
+			String map = (String)session.getAttribute("mapContent");
+
+			log.debug("full_map_path: " + full_map_path);
+			Full_Map fMap = new Full_Map(getMapContent(full_map_path), map);
+			//log.debug("full_map");
+			//log.debug(fMap.getHightLighedMap());
+			
+			session.setAttribute("full_map_path", fMap.getFullMapPath());
+			
+			disp = request.getRequestDispatcher("show_full.jsp");
+			disp.forward(request, response);
 		} else if (action.equals("show")) {
-			int id = Integer.parseInt((String) request.getParameter("id"));
+			Integer id = Integer.parseInt((String) request.getParameter("id"));
+			String ids = (String) request.getParameter("id");
+			session.setAttribute("ids", ids);
 			List<String> content = (List<String>) session.getAttribute("content");
 			int i = 0;
 			for (String c : content) {
@@ -82,6 +99,8 @@ public class Controller extends HttpServlet {
 			log.info("File name : " + fileName);
 			String outputfile = saved_map_folder + fileName; // get path on the
 																// server
+			this.full_map_path = outputfile;
+			
 			createDirectoryIfNeeded(saved_map_folder);
 
 			FileOutputStream os = new FileOutputStream(outputfile);
@@ -151,9 +170,10 @@ public class Controller extends HttpServlet {
 			session.setAttribute("keywords", keywords);
 
 			// On supprime la map
+			/*
 			os = new FileOutputStream(outputfile);
 			os.write('v');
-			os.close();
+			os.close();*/
 
 			disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);
@@ -248,4 +268,30 @@ public class Controller extends HttpServlet {
 		return file.exists();
 	}
 
+	private String getMapContent(String path) {
+		String map = "";
+		BufferedReader br = null;
+		 
+		try {
+ 
+			String sCurrentLine;
+ 
+			br = new BufferedReader(new FileReader(path));
+ 
+			while ((sCurrentLine = br.readLine()) != null) {
+				map += sCurrentLine;
+			}
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		return map;
+	}
 }

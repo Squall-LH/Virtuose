@@ -1,14 +1,15 @@
 <node ID="ID_857269200" TEXT="">
 <node ID="ID_390305822" TEXT="Les missions">
 <node ID="ID_1599979345" TEXT="Commande de Matériel">
-<node ID="ID_185864521" TEXT="Commande simple">
-<node ID="ID_1929470527" TEXT="Les états : Etat 1 => Saisie commande, Etat 2 => Validation RAI, Etat 3 => Prise par PLR, Etat 4 => Matériel en cours de livraison, Etat 5 => Matériel retiré par le technicien">
-<node ID="ID_1978914868" TEXT="Etat 3 en plus code de couleur">
-<node ID="ID_230916240" TEXT="BLEU : Matériel arrivé au magasin">
-<node ID="ID_146091698" TEXT="Edition Bon Livraison">
-<node ID="ID_1349491809" TEXT="Dossier Technicien" class="result" BACKGROUND_COLOR="#FF00FF">
-</node></node>
+<node ID="ID_346290272" TEXT="">
+<node ID="ID_804415879" TEXT="Commande complexe">
+<node ID="ID_1700552218" TEXT="Le matériel est regroupé dans une seule appelation" class="result" BACKGROUND_COLOR="#FF00FF">
+<node ID="ID_965810130" TEXT="PROBLEME : On ne sait pas si tout le matériel est commandé"><node ID="ID_744304830" TEXT="CONSEQUENCE : Ca passe jamais à l'état 4">
 </node>
+<node ID="ID_1232612313" TEXT="SOLUTION 1 : Appeler la plateforme de Bordeau pour qu'elle transmette la liste du matériel pour comparé avec OCTAVE" class="result" BACKGROUND_COLOR="#FF00FF">
+</node>
+<node ID="ID_1771087896" TEXT="SOLUTION 2 : Si matériels livrés appeler le magasinier" class="result" BACKGROUND_COLOR="#FF00FF">
+</node></node>
 </node>
 </node>
 </node>

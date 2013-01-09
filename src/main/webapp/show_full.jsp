@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/style.css" />
 <title>Arbre complet</title>
 </head>
 <body>
-<%String path = "./tmp/"+session.getAttribute("map");%>
+<%String path = "."+(String)session.getAttribute("full_map_path");%>
 <applet code="freemind.main.FreeMindApplet.class"
 	archive="freemindbrowser.jar" width="100%" height="100%">
 	<param name="type" value="application/x-java-applet;version=1.4">
@@ -20,11 +21,7 @@
 	<param name="initial_mode" value="Browse">
 	<param name="selection_method" value="selection_method_direct">
 </applet>
-<p>
-<%
-String i = (String)session.getAttribute("ids");
-out.println("<a href=\"controller?action=full_map&id="+i+"\">Get Full Map</a>");
-%>
-</p>
+
+
 </body>
 </html>

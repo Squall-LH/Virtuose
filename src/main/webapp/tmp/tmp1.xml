@@ -1,13 +1,9 @@
 <node ID="ID_857269200" TEXT="">
-<node ID="ID_390305822" TEXT="Les missions">
-<node ID="ID_1599979345" TEXT="Commande de Matériel">
-<node ID="ID_346290272" TEXT="">
-<node ID="ID_804415879" TEXT="Commande complexe">
-<node ID="ID_1225533976" TEXT="Commande matériel SCALER (Commande matériel national)">
-<node ID="ID_370981595" TEXT="Saisir : Nom, Téléphone, N° Correspondant, N° Dossier" class="result" BACKGROUND_COLOR="#FF00FF">
+<node ID="ID_351143532" TEXT="La fonction">
+<node ID="Freemind_Link_814112127" TEXT="Le périmètre">
+<node ID="ID_1771528937" TEXT="Equipe de technicien Bretagne et Pays de Loire">
+<node ID="ID_799863554" TEXT="SOLUTION : Je dois appeller les chefs de groupe des techniciens" class="result" BACKGROUND_COLOR="#FF00FF">
 </node></node>
-</node>
-</node>
 </node>
 </node>
 </node>
