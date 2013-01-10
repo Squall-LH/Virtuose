@@ -65,7 +65,6 @@ public class Controller extends HttpServlet {
 		} else if(action.equals("show")) {
 			List<String> title = (List<String>)session.getAttribute("title");
 			List<String> content = (List<String>)session.getAttribute("content");
-	
 			
 			String ids = (String) request.getParameter("id");
 			if(ids == null)
@@ -79,7 +78,7 @@ public class Controller extends HttpServlet {
 					id = Integer.parseInt((String) request.getParameter("id"));	
 				} catch(Exception e) {
 					id = 0;
-				}
+				} 	
 			}
 				
 			int i = 0;
@@ -149,6 +148,12 @@ public class Controller extends HttpServlet {
 			for(Document d: docs){
 			    Ids.add(d.get("id"));
 			}
+			
+			if(docs.size() == 0) {
+				disp = request.getRequestDispatcher("no_result.jsp");
+				disp.forward(request, response);
+			}
+			
 			String doc = docs.get(0).get("document");
 			// on suppose que la recherche ne concernera qu'une carte
 			while(Ids.size()>0){

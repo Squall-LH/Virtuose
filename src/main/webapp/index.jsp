@@ -10,6 +10,12 @@
 <body>
 <h2>Virtuose</h2>
 
+<%
+if((Boolean)session.getAttribute("no_result")) {
+	out.println("<p style=\"color:red\">La recherche précédente n'a pas pu aboutir, veuillez essayer avec d'autres mots-clés et/ou une autre carte.</p>");
+}
+%>
+
 <p id="description">
 Entrez une liste de mot-clés séparés par un espace.<br>
 Entrez une carte au format Freemap (.mm).<br><br>
