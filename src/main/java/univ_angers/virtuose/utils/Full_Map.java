@@ -108,7 +108,7 @@ public class Full_Map {
 		log.debug("id_node: " + id);
 		if (listId_result.contains(id)) {
 			log.debug("MATCH!!!!!!!!!");
-			node.setAttribute("BACKGROUND_COLOR", "#ff003c");	
+			node.setAttribute("BACKGROUND_COLOR", "#8edcff");	
 		} else if(listId.contains(id)) {
 			node.setAttribute("BACKGROUND_COLOR", "#bada55");
 		}

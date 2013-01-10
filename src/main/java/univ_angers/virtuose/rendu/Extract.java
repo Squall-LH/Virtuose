@@ -67,7 +67,7 @@ public class Extract {
 			
 			if(e.hasAttribute("TEXT")){
 			    
-			    xmlText = "<node ID=\""+e.getAttribute("ID")+"\" TEXT=\""+e.getAttribute("TEXT")+"\" class=\"result\" BACKGROUND_COLOR=\"#FF00FF\">\n</node>";
+			    xmlText = "<node ID=\""+e.getAttribute("ID")+"\" TEXT=\""+e.getAttribute("TEXT")+"\" class=\"result\" BACKGROUND_COLOR=\"#8edcff\">\n</node>";
 			    read_ids.add(e.getAttribute("ID"));
 			    res_ids.remove(res_ids.indexOf(e.getAttribute("ID")));
 				displayChilds(e);
@@ -132,7 +132,7 @@ public class Extract {
     	    		    String attributes = "ID=\""+ce.getAttribute("ID")+"\" TEXT=\""+ce.getAttribute("TEXT")+"\"";
 		                if(res_ids.contains(ce.getAttribute("ID"))){
     		                int index = res_ids.indexOf(ce.getAttribute("ID"));
-    			            attributes +=" class=\"result\" BACKGROUND_COLOR=\"#FF00FF\"";
+    			            attributes +=" class=\"result\" BACKGROUND_COLOR=\"#8edcff\"";
     			            read_ids.add(ce.getAttribute("ID"));
     			            res_ids.remove(index);
     		            }
@@ -171,7 +171,7 @@ public class Extract {
 		        // e est un des identifiants à extraire
 		        // il faudra donc aussi extraire ses "autres" descendants
 		        int index = res_ids.indexOf(e.getAttribute("ID"));
-			    attributes +=" class=\"result\" BACKGROUND_COLOR=\"#FF00FF\"";
+			    attributes +=" class=\"result\" BACKGROUND_COLOR=\"#8edcff\"";
 			    res_ids.remove(index);
 
                 // ajout de e au contenu xml

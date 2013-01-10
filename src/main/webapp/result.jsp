@@ -17,7 +17,7 @@
 	%>
 	<h3><% out.println((String)session.getAttribute("current_title")); %></h3>
 	<applet code="freemind.main.FreeMindApplet.class"
-		archive="freemindbrowser.jar" width="100%" height="600px">
+		archive="freemindbrowser.jar" width="100%" height="500px">
 		<param name="type" value="application/x-java-applet;version=1.4">
 		<param name="scriptable" value="false">
 		<param name="modes" value="freemind.modes.browsemode.BrowseMode">
