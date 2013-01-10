@@ -41,8 +41,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Les finalit&#xe9;s" ID="Freemind_Link_1263285402" CREATED="1279274268970" MODIFIED="1356013129044" COLOR="#669900" BACKGROUND_COLOR="#ffffff" STYLE="fork">
-<font NAME="Liberation Sans" SIZE="12" BOLD="true"/>
+<node TEXT="Les finalit&#xe9;s" ID="Freemind_Link_1263285402" CREATED="1279274268970" MODIFIED="1357731364533" COLOR="#00b439" BACKGROUND_COLOR="#ffffff" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="16" BOLD="true"/>
 <edge STYLE="bezier" COLOR="#999999" WIDTH="thin"/>
 <node TEXT="Responsable Affaire Intervention" ID="ID_837093217" CREATED="1340712336921" MODIFIED="1356010620745" COLOR="#990000" STYLE="as_parent">
 <font NAME="Arial" SIZE="14"/>

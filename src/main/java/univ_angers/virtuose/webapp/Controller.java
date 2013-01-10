@@ -65,7 +65,7 @@ public class Controller extends HttpServlet {
 		} else if(action.equals("show")) {
 			List<String> title = (List<String>)session.getAttribute("title");
 			List<String> content = (List<String>)session.getAttribute("content");
-			
+
 			String ids = (String) request.getParameter("id");
 			if(ids == null)
 				ids = "0";
@@ -97,6 +97,8 @@ public class Controller extends HttpServlet {
 			disp.forward(request, response);
 
 		} else if (action.equals("search")) {
+			session.setAttribute("no_result", new Boolean(false));
+			
 			// get access to file that is uploaded from client
 			Part p1 = request.getPart("map");
 			InputStream is = p1.getInputStream();
@@ -150,7 +152,8 @@ public class Controller extends HttpServlet {
 			}
 			
 			if(docs.size() == 0) {
-				disp = request.getRequestDispatcher("no_result.jsp");
+				session.setAttribute("no_result", new Boolean(true));
+				disp = request.getRequestDispatcher("index.jsp");
 				disp.forward(request, response);
 			}
 			

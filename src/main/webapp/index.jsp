@@ -11,7 +11,8 @@
 <h2>Virtuose</h2>
 
 <%
-if((Boolean)session.getAttribute("no_result")) {
+Boolean no_result = (Boolean)session.getAttribute("no_result");
+if(no_result != null && no_result) {
 	out.println("<p style=\"color:red\">La recherche précédente n'a pas pu aboutir, veuillez essayer avec d'autres mots-clés et/ou une autre carte.</p>");
 }
 %>

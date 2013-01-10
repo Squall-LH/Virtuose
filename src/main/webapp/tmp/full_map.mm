@@ -16,7 +16,7 @@
     <edge STYLE="horizontal" COLOR="#999999" WIDTH="thin" />
     <hook NAME="MapStyle" zoom="1.128" max_node_width="300" />
     <hook NAME="accessories/plugins/AutomaticLayout.properties" />
-    <node TEXT="La fonction" POSITION="right" ID="ID_351143532" CREATED="1279274264173" MODIFIED="1356010620741" COLOR="#0033ff" BACKGROUND_COLOR="#ffffff" STYLE="bubble">
+    <node TEXT="La fonction" POSITION="right" ID="ID_351143532" CREATED="1279274264173" MODIFIED="1356010620741" COLOR="#0033ff" BACKGROUND_COLOR="#ff003c" STYLE="bubble">
       <font NAME="Arial" SIZE="18" BOLD="true" />
       <edge STYLE="sharp_bezier" COLOR="#999999" WIDTH="8" />
       <node TEXT="Le contexte de &#xA;la fonction" ID="ID_1025389210" CREATED="1279274268970" MODIFIED="1356010620742" COLOR="#00b439" BACKGROUND_COLOR="#ffffff" STYLE="fork">
@@ -35,8 +35,8 @@
           </node>
         </node>
       </node>
-      <node TEXT="Les finalités" ID="Freemind_Link_1263285402" CREATED="1279274268970" MODIFIED="1356013129044" COLOR="#669900" BACKGROUND_COLOR="#ffffff" STYLE="fork">
-        <font NAME="Liberation Sans" SIZE="12" BOLD="true" />
+      <node TEXT="Les finalités" ID="Freemind_Link_1263285402" CREATED="1279274268970" MODIFIED="1357731364533" COLOR="#00b439" BACKGROUND_COLOR="#ffffff" STYLE="fork">
+        <font NAME="Liberation Sans" SIZE="16" BOLD="true" />
         <edge STYLE="bezier" COLOR="#999999" WIDTH="thin" />
         <node TEXT="Responsable Affaire Intervention" ID="ID_837093217" CREATED="1340712336921" MODIFIED="1356010620745" COLOR="#990000" STYLE="as_parent">
           <font NAME="Arial" SIZE="14" />
@@ -91,7 +91,7 @@
         <font NAME="Arial" SIZE="16" />
         <edge STYLE="bezier" COLOR="#999999" WIDTH="thin" />
       </node>
-      <node TEXT="Le périmètre" ID="Freemind_Link_814112127" CREATED="1279274268970" MODIFIED="1356010620754" COLOR="#00b439" BACKGROUND_COLOR="#ffffff" STYLE="fork">
+      <node TEXT="Le périmètre" ID="Freemind_Link_814112127" CREATED="1279274268970" MODIFIED="1356010620754" COLOR="#00b439" BACKGROUND_COLOR="#ff003c" STYLE="fork">
         <font NAME="Arial" SIZE="16" />
         <edge STYLE="bezier" COLOR="#999999" WIDTH="thin" />
         <node TEXT="Sur la DT Ouest, mon métier est le seul qui travaille en mode affaire. C'est le métier le plus complexe." ID="ID_1181249664" CREATED="1340713546203" MODIFIED="1356010620755" COLOR="#990000" STYLE="as_parent">
@@ -106,14 +106,14 @@
           <font NAME="Arial" SIZE="14" />
           <edge STYLE="horizontal" />
         </node>
-        <node TEXT="Equipe de technicien Bretagne et Pays de Loire" ID="ID_1771528937" CREATED="1340715311640" MODIFIED="1356010620757" COLOR="#990000" STYLE="as_parent">
+        <node TEXT="Equipe de technicien Bretagne et Pays de Loire" ID="ID_1771528937" CREATED="1340715311640" MODIFIED="1356010620757" COLOR="#990000" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
           <font NAME="Arial" SIZE="14" />
           <edge STYLE="horizontal" />
           <node TEXT="INCONVENIENT : Ils n'ont pas le même mode de fonctionnement (Les compêtences ne sont pas rentrées de la même façon dans le plan de charge)" ID="ID_406904909" CREATED="1340715341859" MODIFIED="1356010620757" COLOR="#111111" STYLE="as_parent">
             <font NAME="Arial" SIZE="12" />
             <edge STYLE="horizontal" />
           </node>
-          <node TEXT="SOLUTION : Je dois appeller les chefs de groupe des techniciens" ID="ID_799863554" CREATED="1340715450968" MODIFIED="1356010620758" COLOR="#111111" STYLE="as_parent">
+          <node TEXT="SOLUTION : Je dois appeller les chefs de groupe des techniciens" ID="ID_799863554" CREATED="1340715450968" MODIFIED="1356010620758" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
             <font NAME="Arial" SIZE="12" />
             <edge STYLE="horizontal" />
           </node>
@@ -132,14 +132,14 @@
         </node>
       </node>
     </node>
-    <node TEXT="Les missions" POSITION="right" ID="ID_390305822" CREATED="1279274266705" MODIFIED="1356010620762" COLOR="#0033ff" BACKGROUND_COLOR="#ff003c" STYLE="bubble">
+    <node TEXT="Les missions" POSITION="right" ID="ID_390305822" CREATED="1279274266705" MODIFIED="1356010620762" COLOR="#0033ff" BACKGROUND_COLOR="#ffffff" STYLE="bubble">
       <font NAME="Arial" SIZE="18" BOLD="true" />
       <edge STYLE="sharp_bezier" COLOR="#999999" WIDTH="8" />
       <node TEXT="Analyse de Dossier - Prise en charge" ID="ID_151411633" CREATED="1338907599937" MODIFIED="1356010620764" COLOR="#00b439" STYLE="fork" LINK="AnalyseDeDossier-PriseEnCharge.mm">
         <font NAME="Arial" SIZE="16" />
         <edge STYLE="bezier" WIDTH="thin" />
       </node>
-      <node TEXT="Commande de Matériel" ID="ID_1599979345" CREATED="1297676732997" MODIFIED="1356010620765" COLOR="#00b439" STYLE="fork" BACKGROUND_COLOR="#ff003c">
+      <node TEXT="Commande de Matériel" ID="ID_1599979345" CREATED="1297676732997" MODIFIED="1356010620765" COLOR="#00b439" STYLE="fork">
         <font NAME="Arial" SIZE="16" />
         <edge STYLE="bezier" WIDTH="thin" />
         <node TEXT="Commande simple" ID="ID_185864521" CREATED="1338907126765" MODIFIED="1356010620766" COLOR="#990000" STYLE="as_parent">
@@ -218,10 +218,10 @@
           <font NAME="Arial" SIZE="14" />
           <edge STYLE="horizontal" />
         </node>
-        <node TEXT="" ID="ID_346290272" CREATED="1340116819656" MODIFIED="1356010620773" COLOR="#990000" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+        <node TEXT="" ID="ID_346290272" CREATED="1340116819656" MODIFIED="1356010620773" COLOR="#990000" STYLE="as_parent">
           <font NAME="Arial" SIZE="14" />
           <edge STYLE="horizontal" />
-          <node TEXT="Commande complexe" ID="ID_804415879" CREATED="1338907126765" MODIFIED="1356010620774" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+          <node TEXT="Commande complexe" ID="ID_804415879" CREATED="1338907126765" MODIFIED="1356010620774" COLOR="#111111" STYLE="as_parent">
             <font NAME="Arial" SIZE="12" />
             <edge STYLE="horizontal" />
             <node TEXT="OCTAVE (Appli commercial matériel vendu)" ID="ID_1112263991" CREATED="1340114286015" MODIFIED="1356010620774" COLOR="#111111" STYLE="as_parent">
@@ -260,21 +260,21 @@
                 <edge STYLE="horizontal" />
               </node>
             </node>
-            <node TEXT="Le matériel est regroupé dans une seule appelation" ID="ID_1700552218" CREATED="1340114903562" MODIFIED="1356010620777" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+            <node TEXT="Le matériel est regroupé dans une seule appelation" ID="ID_1700552218" CREATED="1340114903562" MODIFIED="1356010620777" COLOR="#111111" STYLE="as_parent">
               <font NAME="Arial" SIZE="12" />
               <edge STYLE="horizontal" />
-              <node TEXT="PROBLEME : On ne sait pas si tout le matériel est commandé" ID="ID_965810130" CREATED="1340116450328" MODIFIED="1356010620778" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+              <node TEXT="PROBLEME : On ne sait pas si tout le matériel est commandé" ID="ID_965810130" CREATED="1340116450328" MODIFIED="1356010620778" COLOR="#111111" STYLE="as_parent">
                 <font NAME="Arial" SIZE="12" />
                 <edge STYLE="horizontal" />
-                <node TEXT="SOLUTION 1 : Appeler la plateforme de Bordeau pour qu'elle transmette la liste du matériel pour comparé avec OCTAVE" ID="ID_1232612313" CREATED="1340116505859" MODIFIED="1356010620778" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+                <node TEXT="SOLUTION 1 : Appeler la plateforme de Bordeau pour qu'elle transmette la liste du matériel pour comparé avec OCTAVE" ID="ID_1232612313" CREATED="1340116505859" MODIFIED="1356010620778" COLOR="#111111" STYLE="as_parent">
                   <font NAME="Arial" SIZE="12" />
                   <edge STYLE="horizontal" />
                 </node>
-                <node TEXT="SOLUTION 2 : Si matériels livrés appeler le magasinier" ID="ID_1771087896" CREATED="1340116633671" MODIFIED="1356010620779" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+                <node TEXT="SOLUTION 2 : Si matériels livrés appeler le magasinier" ID="ID_1771087896" CREATED="1340116633671" MODIFIED="1356010620779" COLOR="#111111" STYLE="as_parent">
                   <font NAME="Arial" SIZE="12" />
                   <edge STYLE="horizontal" />
                 </node>
-                <node TEXT="CONSEQUENCE : Ca passe jamais à l'état 4" ID="ID_744304830" CREATED="1340116709515" MODIFIED="1356010620779" COLOR="#111111" STYLE="as_parent" BACKGROUND_COLOR="#ff003c">
+                <node TEXT="CONSEQUENCE : Ca passe jamais à l'état 4" ID="ID_744304830" CREATED="1340116709515" MODIFIED="1356010620779" COLOR="#111111" STYLE="as_parent">
                   <font NAME="Arial" SIZE="12" />
                   <edge STYLE="horizontal" />
                 </node>
