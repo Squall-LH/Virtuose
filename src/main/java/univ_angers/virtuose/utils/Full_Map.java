@@ -29,10 +29,12 @@ public class Full_Map {
 			Document document_full_map = sxb.build(new StringReader(full_map));
 
 			List<String> listId = getListId(document_map);
+			List<String> listId_result = getListIdResult(document_map);
 
 			log.debug("listId: " + listId.toString());
+			log.debug("listId_result: " + listId_result.toString());
 			
-			highlightId(document_full_map, listId);
+			highlightId(document_full_map, listId, listId_result);
 			full_map_doc = document_full_map;
 			hightLightedMap = docToString(document_full_map);
 
@@ -72,13 +74,13 @@ public class Full_Map {
 		return hightLightedMap;
 	}
 
-	private void highlightId(Document doc, List<String> listId) {
+	private void highlightId(Document doc, List<String> listId, List<String> listId_result) {
 		Element node = doc.getRootElement();
 
 		List<Element> lNode = new ArrayList<Element>();
 		lNode.add(node);
 
-		hightLight(node, listId);
+		hightLight(node, listId, listId_result);
 		Queue<Element> stack = new ArrayDeque<Element>();
 
 		Iterator<Element> i = node.getChildren().iterator();
@@ -89,7 +91,7 @@ public class Full_Map {
 		while (stack.peek() != null) {
 			Element e = stack.poll();
 
-			hightLight(e, listId);
+			hightLight(e, listId, listId_result);
 			Iterator<Element> e_i = e.getChildren().iterator();
 			while (e_i.hasNext()) {
 				Element eChild = (Element) e_i.next();
@@ -101,12 +103,14 @@ public class Full_Map {
 		}
 	}
 
-	private void hightLight(Element node, List<String> listId) {
+	private void hightLight(Element node, List<String> listId, List<String> listId_result) {
 		String id = node.getAttributeValue("ID");
 		log.debug("id_node: " + id);
-		if (listId.contains(id)) {
+		if (listId_result.contains(id)) {
 			log.debug("MATCH!!!!!!!!!");
-			node.setAttribute("BACKGROUND_COLOR", "#ff003c");
+			node.setAttribute("BACKGROUND_COLOR", "#ff003c");	
+		} else if(listId.contains(id)) {
+			node.setAttribute("BACKGROUND_COLOR", "#bada55");
 		}
 
 	}
@@ -116,6 +120,14 @@ public class Full_Map {
 		listId.add(id);
 	}
 
+	public void addIdResult(Element node, List<String> listId) {
+		String id = node.getAttributeValue("ID");
+		if(node.getAttribute("class") != null) {
+			listId.add(id);		
+		}
+	}
+
+	
 	/** Retourne la liste des Id contenus dans le doc */
 	public List<String> getListId(Document doc) {
 		Element node = doc.getRootElement();
@@ -136,6 +148,40 @@ public class Full_Map {
 			Element e = stack.poll();
 
 			addId(e, listId);
+			Iterator<Element> e_i = e.getChildren().iterator();
+			while (e_i.hasNext()) {
+				Element eChild = (Element) e_i.next();
+				if (!lNode.contains(eChild)) {
+					lNode.add(eChild);
+					stack.add(eChild);
+				}
+			}
+		}
+
+		return listId;
+	}
+	
+	
+	/** Retourne la liste des Id contenus dans le doc et considéré comme résultat */
+	public List<String> getListIdResult(Document doc) {
+		Element node = doc.getRootElement();
+		List<String> listId = new ArrayList<String>();
+
+		List<Element> lNode = new ArrayList<Element>();
+		lNode.add(node);
+
+		addIdResult(node, listId);
+		Queue<Element> stack = new ArrayDeque<Element>();
+
+		Iterator<Element> i = node.getChildren().iterator();
+		while (i.hasNext()) {
+			stack.add(i.next());
+		}
+
+		while (stack.peek() != null) {
+			Element e = stack.poll();
+
+			addIdResult(e, listId);
 			Iterator<Element> e_i = e.getChildren().iterator();
 			while (e_i.hasNext()) {
 				Element eChild = (Element) e_i.next();
